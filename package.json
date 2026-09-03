@@ -22,6 +22,8 @@
     "type-check": "yarn workspace @falah/web type-check && yarn workspace @falah/api type-check"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/morgan": "^1.9.10",
     "concurrently": "^8.2.2"
   }
 }

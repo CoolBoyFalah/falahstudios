@@ -6,8 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("");
-
+const [, setActiveLink] = useState("");
   const navItems = [
     { label: "Services", href: "#services" },
     { label: "Work", href: "#portfolio" },

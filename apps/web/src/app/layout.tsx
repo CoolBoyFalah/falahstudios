@@ -1,18 +1,7 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const bebasNeue = Bebas_Neue({
-  subsets: ["latin"],
-  weight: "400",
-});
 
 export const metadata: Metadata = {
   title: "Falah Studios — Creative Technology Studio in the UAE",
@@ -84,7 +73,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
-      <body className={spaceGrotesk.className}>
+      <body>
         <Navigation />
         <main>{children}</main>
         <Footer />
