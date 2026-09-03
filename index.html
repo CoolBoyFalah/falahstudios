@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Falah Studios 2.0</title>
+    <meta
+      name="description"
+      content="Falah Studios creates premium brands, websites, systems, and digital growth experiences for ambitious businesses."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #080808;
+        --bg-2: #0e0e0e;
+        --panel: rgba(255, 255, 255, 0.03);
+        --panel-strong: rgba(255, 255, 255, 0.06);
+        --line: rgba(255, 255, 255, 0.12);
+        --text: #f2ede6;
+        --muted: rgba(242, 237, 230, 0.68);
+        --amber: #f5b942;
+        --amber-2: #f2a105;
+        --amber-3: #d97706;
+        --shadow: rgba(245, 185, 66, 0.28);
+        --max: 1200px;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top left, rgba(245, 185, 66, 0.14), transparent 25%),
+          radial-gradient(circle at bottom right, rgba(245, 185, 66, 0.10), transparent 30%),
+          var(--bg);
+        color: var(--text);
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; display: block; }
+      button { font: inherit; }
+
+      .container {
+        width: min(var(--max), calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        backdrop-filter: blur(18px);
+        background: rgba(8, 8, 8, 0.76);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 80px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--amber), var(--amber-3));
+        color: #090909;
+        font-weight: 900;
+        font-size: 1.2rem;
+        box-shadow: 0 0 30px rgba(245, 185, 66, 0.45);
+      }
+
+      .brand-text {
+        line-height: 1;
+      }
+
+      .brand-text small {
+        display: block;
+        font-size: 9px;
+        letter-spacing: 0.36em;
+        text-transform: uppercase;
+        color: var(--amber);
+      }
+
+      .brand-text strong {
+        display: block;
+        margin-top: 4px;
+        font-size: 0.88rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .nav a {
+        position: relative;
+        color: var(--muted);
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, var(--amber), transparent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s ease;
+      }
+
+      .nav a:hover::after,
+      .nav a:focus-visible::after { transform: scaleX(1); }
+
+      .nav-cta,
+      .primary-btn,
+      .secondary-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+      }
+
+      .nav-cta,
+      .primary-btn {
+        background: linear-gradient(135deg, var(--amber), var(--amber-2));
+        color: #080808;
+        border: 1px solid rgba(245, 185, 66, 0.8);
+        box-shadow: 0 0 32px rgba(245, 185, 66, 0.26);
+      }
+
+      .nav-cta {
+        padding: 11px 20px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .primary-btn {
+        padding: 17px 28px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .secondary-btn {
+        padding: 17px 28px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.02);
+        color: var(--text);
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .primary-btn:hover, .secondary-btn:hover, .nav-cta:hover {
+        transform: translateY(-2px);
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 52px 0 40px;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 20% 30%, rgba(245, 185, 66, 0.18), transparent 22%),
+          radial-gradient(circle at 80% 18%, rgba(245, 185, 66, 0.12), transparent 18%);
+        pointer-events: none;
+      }
+
+      .hero-inner {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 32px;
+        align-items: center;
+        min-height: calc(100vh - 120px);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px 8px 10px;
+        border: 1px solid rgba(245, 185, 66, 0.35);
+        background: rgba(245, 185, 66, 0.05);
+        color: var(--amber);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.28em;
+        border-radius: 999px;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--amber);
+        box-shadow: 0 0 18px rgba(245, 185, 66, 0.7);
+      }
+
+      h1 {
+        margin: 26px 0 20px;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(4.1rem, 7vw, 10rem);
+        line-height: 0.88;
+        letter-spacing: -0.06em;
+        font-weight: 400;
+      }
+
+      h1 .highlight {
+        display: block;
+        background: linear-gradient(135deg, #f7d78d, var(--amber), var(--amber-3));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .lead {
+        max-width: 620px;
+        font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+        line-height: 1.8;
+        color: var(--muted);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-top: 36px;
+      }
+
+      .mini-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 42px;
+        max-width: 620px;
+      }
+
+      .mini-stat {
+        padding: 18px 16px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.015);
+        border-radius: 20px;
+      }
+
+      .mini-stat strong {
+        display: block;
+        font-size: clamp(1.6rem, 2vw, 2.3rem);
+        color: var(--amber);
+      }
+
+      .mini-stat span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .hero-visual {
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+
+      .visual-shell {
+        position: relative;
+        width: min(100%, 490px);
+        aspect-ratio: 1;
+        border-radius: 32px;
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(14,14,14,0.98), rgba(17,17,17,0.92));
+        box-shadow: 0 40px 80px rgba(0,0,0,0.35);
+        overflow: hidden;
+        padding: 22px;
+      }
+
+      .visual-shell::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top left, rgba(245,185,66,0.18), transparent 35%);
+      }
+
+      .visual-top {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+
+      .window-dots {
+        display: flex;
+        gap: 8px;
+      }
+
+      .window-dots span {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        display: block;
+      }
+
+      .window-dots span:nth-child(1) { background: #f5b942; }
+      .window-dots span:nth-child(2) { background: rgba(255,255,255,0.55); }
+      .window-dots span:nth-child(3) { background: rgba(255,255,255,0.28); }
+
+      .live-pill {
+        background: rgba(245,185,66,0.08);
+        border: 1px solid rgba(245,185,66,0.3);
+        color: var(--amber);
+        font-size: 9px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        padding: 7px 9px;
+        border-radius: 999px;
+      }
+
+      .visual-card {
+        position: relative;
+        z-index: 1;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: linear-gradient(135deg, rgba(245,185,66,0.08), rgba(13,13,13,0.8));
+      }
+
+      .card-label {
+        font-size: 10px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.58);
+      }
+
+      .score-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        margin-top: 20px;
+      }
+
+      .score-row strong {
+        font-size: clamp(2.2rem, 3vw, 3.2rem);
+        letter-spacing: -0.05em;
+      }
+
+      .bar {
+        height: 12px;
+        width: 100%;
+        border-radius: 999px;
+        overflow: hidden;
+        background: rgba(255,255,255,0.08);
+        margin-top: 16px;
+      }
+
+      .bar > span {
+        display: block;
+        height: 100%;
+        width: 89%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--amber), var(--amber-3));
+      }
+
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .mini-grid .item {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255,255,255,0.02);
+        padding: 16px;
+      }
+
+      .mini-grid .item small {
+        display: block;
+        font-size: 9px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .mini-grid .item strong {
+        display: block;
+        margin-top: 10px;
+        font-size: 2rem;
+        letter-spacing: -0.06em;
+      }
+
+      .ticker {
+        display: flex;
+        align-items: center;
+        gap: 36px;
+        white-space: nowrap;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 14px 0;
+        margin-top: 10px;
+        color: rgba(255,255,255,0.58);
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        font-size: 10px;
+        overflow: hidden;
+      }
+
+      .ticker-track {
+        display: flex;
+        gap: 36px;
+        min-width: max-content;
+        animation: roll 26s linear infinite;
+      }
+
+      .ticker span { color: rgba(255,255,255,0.72); }
+      .ticker .gold { color: var(--amber); }
+
+      @keyframes roll {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+
+      section {
+        padding: 100px 0;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+
+      .kicker {
+        display: inline-block;
+        color: var(--amber);
+        text-transform: uppercase;
+        letter-spacing: 0.28em;
+        font-size: 10px;
+        margin-bottom: 14px;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(2.4rem, 4vw, 4.3rem);
+        line-height: 0.98;
+        letter-spacing: -0.05em;
+        font-family: "Bebas Neue", sans-serif;
+        font-weight: 400;
+      }
+
+      .services {
+        background: rgba(255,255,255,0.012);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .service-card {
+        padding: 22px 20px;
+        border-radius: 24px;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+      }
+
+      .service-card .num {
+        color: var(--amber);
+        font-size: 11px;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+      }
+
+      .service-card h3 {
+        margin: 18px 0 12px;
+        font-size: clamp(1.6rem, 2vw, 2.3rem);
+        line-height: 1.1;
+        letter-spacing: -0.04em;
+      }
+
+      .service-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .approach {
+        padding-top: 120px;
+      }
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .process-card {
+        padding: 22px 18px;
+        border-radius: 20px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.02);
+      }
+
+      .process-card .n {
+        font-size: 3rem;
+        color: var(--amber);
+        font-weight: 700;
+        letter-spacing: -0.08em;
+      }
+
+      .process-card p {
+        margin: 14px 0 0;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .work-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .project-card {
+        overflow: hidden;
+        border-radius: 24px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.02);
+      }
+
+      .project-preview {
+        position: relative;
+        height: 260px;
+        padding: 20px;
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        background: linear-gradient(135deg, rgba(245,185,66,0.2), rgba(17,17,17,0.9));
+      }
+
+      .project-preview.alt { background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(17,17,17,0.9)); }
+      .project-preview.alt-2 { background: linear-gradient(135deg, rgba(245, 185, 66, 0.28), rgba(21,21,21,0.9)); }
+
+      .project-preview::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top left, rgba(255,255,255,0.15), transparent 35%);
+      }
+
+      .project-preview > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .project-preview .meta {
+        font-size: 9px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.7);
+      }
+
+      .project-preview h3 {
+        margin: 8px 0 0;
+        font-size: clamp(2rem, 2.6vw, 2.8rem);
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      .project-preview .tag {
+        align-self: flex-start;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.2);
+        background: rgba(0,0,0,0.2);
+        font-size: 9px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--amber);
+      }
+
+      .project-info {
+        padding: 20px 20px 24px;
+      }
+
+      .project-info strong {
+        font-size: 2rem;
+        letter-spacing: -0.06em;
+        color: var(--amber);
+      }
+
+      .project-info a {
+        display: inline-flex;
+        margin-top: 16px;
+        color: var(--text);
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .testimonials {
+        background: rgba(255,255,255,0.012);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .quote-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .quote {
+        padding: 28px 24px;
+        border-radius: 24px;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+      }
+
+      .quote .mark {
+        font-size: 4rem;
+        line-height: 1;
+        color: var(--amber);
+      }
+
+      .quote p {
+        margin: 10px 0 20px;
+        color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.8;
+      }
+
+      .quote footer {
+        border-top: 1px solid var(--line);
+        padding-top: 16px;
+      }
+
+      .quote footer strong {
+        display: block;
+        font-size: 1.05rem;
+      }
+
+      .quote footer span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .cta-box {
+        padding: 32px;
+        border-radius: 32px;
+        background: linear-gradient(135deg, rgba(245,185,66,0.11), rgba(10,10,10,0.8));
+        border: 1px solid rgba(245,185,66,0.25);
+      }
+
+      .cta-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .cta-box h2 {
+        margin-top: 8px;
+      }
+
+      .cta-side {
+        display: grid;
+        gap: 16px;
+      }
+
+      .cta-card {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(0,0,0,0.18);
+        padding: 18px 20px;
+      }
+
+      .cta-card small {
+        display: block;
+        color: var(--muted);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .cta-card a,
+      .cta-card strong {
+        display: block;
+        margin-top: 10px;
+        font-size: 1.25rem;
+      }
+
+      footer {
+        padding: 24px 0 60px;
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        border-top: 1px solid var(--line);
+        padding-top: 24px;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        color: var(--muted);
+      }
+
+      .footer-links a:hover { color: var(--text); }
+
+      /* Falah Studios 2.0 browser concept layer */
+      .studio-page .lang-toggle { display: inline-flex; gap: 8px; align-items: center; margin-right: 14px; padding: 9px 12px; border: 1px solid var(--line); color: var(--muted); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; background: transparent; }.studio-page .lang-toggle strong { color: var(--amber); font-weight: 700; }.studio-page .lang-toggle:hover { border-color: var(--amber); color: var(--text); }.studio-page .contact-methods { display: flex; flex-wrap: wrap; gap: 10px; }.studio-page .contact-method { display: inline-flex; align-items: center; gap: 8px; padding: 10px 13px; border: 1px solid var(--line); color: var(--muted); font-size: 10px; transition: border-color .3s, color .3s, transform .3s; }.studio-page .contact-method:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-3px); }
+      body > .topbar,
+      body > main,
+      body > footer { display: none !important; }
+      .studio-page { min-height: 100vh; background: var(--bg); color: var(--text); overflow: hidden; }
+      .studio-page * { box-sizing: border-box; }
+      .studio-page a { color: inherit; text-decoration: none; }
+      .studio-page .intro { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: var(--bg); transition: opacity .9s var(--ease), visibility .9s; }
+      .studio-page .intro.done { opacity: 0; visibility: hidden; pointer-events: none; }
+      .studio-page .intro-inner { text-align: center; }.studio-page .intro-mark { width: 70px; height: 70px; margin: 0 auto 24px; display: grid; place-items: center; border: 1px solid rgba(245,185,66,.55); border-radius: 50%; color: var(--amber); font-size: 23px; animation: studioSpin 5s linear infinite; }.studio-page .intro p { margin: 0; color: var(--muted); font-size: 10px; letter-spacing: .35em; text-transform: uppercase; }.studio-page .intro-line { width: 120px; height: 1px; margin: 22px auto 0; background: var(--amber); transform-origin: left; animation: studioLoad 1.5s var(--ease) both; }
+      .studio-page .grain { position: fixed; inset: 0; z-index: 21; pointer-events: none; opacity: .035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E"); }
+      .studio-page .cursor-dot,.studio-page .cursor-ring,.studio-page .cursor-label { position: fixed; pointer-events: none; z-index: 90; display: none; }.cursor-mode .studio-page .cursor-dot,.cursor-mode .studio-page .cursor-ring,.cursor-mode .studio-page .cursor-label { display: block; }.studio-page .cursor-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--amber); transform: translate(-50%,-50%); }.studio-page .cursor-ring { width: 38px; height: 38px; border: 1px solid rgba(245,185,66,.7); border-radius: 50%; transform: translate(-50%,-50%); transition: width .35s var(--ease),height .35s var(--ease),background .35s; }.studio-page .cursor-label { padding: 7px 10px; border: 1px solid rgba(245,185,66,.5); background: rgba(8,8,8,.86); color: var(--amber); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; transform: translate(16px,16px); opacity: 0; transition: opacity .25s; }.cursor-hover .studio-page .cursor-ring { width: 65px; height: 65px; background: rgba(245,185,66,.12); }.cursor-hover .studio-page .cursor-label { opacity: 1; }
+      @keyframes studioLoad { from { transform: scaleX(0); } to { transform: scaleX(1); } } @keyframes studioSpin { to { transform: rotate(360deg); } }
+      .studio-page .site-nav { position: fixed; inset: 0 0 auto; z-index: 50; height: 82px; border-bottom: 1px solid transparent; transition: .45s var(--ease); }
+      .studio-page .site-nav.scrolled { background: rgba(8,8,8,.84); backdrop-filter: blur(20px); border-color: var(--line); }
+      .studio-page .nav-inner,.studio-page .section-inner { width: min(1220px, calc(100% - 48px)); margin: auto; }
+      .studio-page .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+      .studio-page .s-brand { display: flex; align-items: center; gap: 12px; font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: .16em; }
+      .studio-page .s-mark { width: 34px; height: 34px; border: 1px solid var(--amber); display: grid; place-items: center; color: var(--amber); transform: rotate(45deg); }
+      .studio-page .s-mark span { transform: rotate(-45deg); }
+      .studio-page .s-brand em { color: var(--amber); font-style: normal; }
+      .studio-page .s-links { display: flex; align-items: center; gap: 28px; }
+      .studio-page .s-links a { color: var(--muted); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; transition: .25s; }
+      .studio-page .s-links a:hover { color: var(--amber); }
+      .studio-page .s-cta { padding: 12px 19px; border: 1px solid var(--amber); border-radius: 999px; color: #080808 !important; background: var(--amber); font-weight: 800; }
+      .studio-page .s-hero { min-height: 100vh; position: relative; display: grid; align-items: center; padding: 120px 0 70px; }
+      .studio-page .s-hero:before { content: ''; position: absolute; width: 760px; height: 760px; right: -270px; top: -280px; border: 1px solid rgba(245,185,66,.18); border-radius: 50%; box-shadow: 0 0 0 70px rgba(245,185,66,.025), 0 0 0 140px rgba(245,185,66,.018); }
+      .studio-page .s-hero-grid { position: relative; display: grid; grid-template-columns: 1.06fr .94fr; gap: 65px; align-items: center; }
+      .studio-page .s-eyebrow { display: flex; align-items: center; gap: 10px; color: var(--amber); font-size: 10px; letter-spacing: .28em; text-transform: uppercase; }
+      .studio-page .s-eyebrow:before { content: ''; width: 25px; height: 1px; background: var(--amber); }
+      .studio-page .s-hero h1 { max-width: 760px; margin: 26px 0 25px; font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 10vw, 158px); font-weight: 400; letter-spacing: .01em; line-height: .81; }
+      .studio-page .s-hero h1 span { display: block; }
+      .studio-page .s-hero h1 .gold { color: var(--amber); }
+      .studio-page .s-hero h1 .serif { font-family: 'DM Serif Display', serif; font-style: italic; letter-spacing: -.04em; }
+      .studio-page .s-lead { max-width: 570px; color: var(--muted); font-size: 17px; line-height: 1.9; }
+      .studio-page .s-actions { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 32px; }
+      .studio-page .s-btn { display: inline-flex; align-items: center; gap: 12px; padding: 15px 24px; border: 1px solid var(--line); border-radius: 999px; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; transition: transform .35s var(--ease), border-color .3s, box-shadow .3s; }
+      .studio-page .s-btn:hover { transform: translateY(-4px); border-color: var(--amber); box-shadow: 0 15px 35px rgba(245,185,66,.14); }
+      .studio-page .s-btn.primary { color: #080808; background: var(--amber); border-color: var(--amber); font-weight: 800; }
+      .studio-page .s-stats { display: flex; gap: 28px; margin-top: 45px; }
+      .studio-page .s-stats strong { display: block; color: var(--amber); font-size: 27px; letter-spacing: -.06em; }
+      .studio-page .s-stats span { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; }
+      .studio-page .s-art { position: relative; min-height: 515px; }
+      .studio-page .s-orbit { position: absolute; inset: 4% 0; border: 1px solid rgba(245,185,66,.3); border-radius: 50%; transform: rotate(-24deg); }
+      .studio-page .s-orbit:before,.studio-page .s-orbit:after { content: ''; position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 22px var(--amber); }
+      .studio-page .s-orbit:before { top: 12%; left: 18%; }.studio-page .s-orbit:after { bottom: 12%; right: 8%; width: 5px; height: 5px; }
+      .studio-page .s-card { position: absolute; inset: 13% 5% 7%; padding: 25px; border: 1px solid var(--line); border-radius: 28px; background: linear-gradient(145deg, rgba(245,185,66,.13), rgba(13,13,13,.9)); box-shadow: 0 45px 90px rgba(0,0,0,.45); transform: rotate(5deg); transition: transform .7s var(--ease); }
+      .studio-page .s-art:hover .s-card { transform: rotate(0) translateY(-8px); }
+      .studio-page .s-card:before { content: 'FALAH / 02'; color: var(--amber); font-size: 9px; letter-spacing: .25em; }
+      .studio-page .s-card-title { margin: 46px 0 25px; font-family: 'Bebas Neue'; font-size: clamp(60px, 8vw, 105px); line-height: .78; }
+      .studio-page .s-card-title em { color: var(--amber); font-family: 'DM Serif Display'; }
+      .studio-page .s-card-rule { height: 1px; background: var(--line); margin: 28px 0; }.studio-page .s-card-foot { display: flex; justify-content: space-between; color: var(--muted); font-size: 9px; letter-spacing: .15em; text-transform: uppercase; }
+      .studio-page .s-note { position: absolute; bottom: 2%; left: -5%; padding: 14px 17px; background: var(--amber); color: #080808; font-size: 9px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; animation: studioFloat 5s ease-in-out infinite; }
+      @keyframes studioFloat { 50% { transform: translateY(-13px); } }
+      .studio-page .s-marquee { overflow: hidden; border-block: 1px solid var(--line); background: #0c0c0c; padding: 15px 0; }.studio-page .s-marquee-track { display: flex; width: max-content; animation: studioMarquee 30s linear infinite; }.studio-page .s-marquee-item { display: flex; align-items: center; gap: 27px; padding: 0 28px; white-space: nowrap; color: var(--muted); font-size: 10px; letter-spacing: .27em; text-transform: uppercase; }.studio-page .s-marquee-item b { color: var(--amber); font-size: 16px; }@keyframes studioMarquee { to { transform: translateX(-50%); } }
+      .studio-page .s-section { padding: 120px 0; }.studio-page .s-section.dark { background: #0d0d0d; border-block: 1px solid var(--line); }.studio-page .s-head { display: flex; justify-content: space-between; align-items: end; gap: 25px; margin-bottom: 48px; }.studio-page .s-head h2 { max-width: 680px; margin: 0; font-family: 'Bebas Neue'; font-size: clamp(52px, 6vw, 87px); font-weight: 400; line-height: .86; }.studio-page .s-head p { max-width: 330px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.8; }.studio-page .s-kicker { margin-bottom: 13px; color: var(--amber); font-size: 10px; letter-spacing: .28em; text-transform: uppercase; }
+      .studio-page .s-manifesto { display: grid; grid-template-columns: .7fr 1.3fr; gap: 85px; }.studio-page .s-aside { border-top: 1px solid var(--amber); padding-top: 16px; }.studio-page .s-aside strong { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; }.studio-page .s-aside p { color: var(--muted); font-size: 13px; line-height: 1.85; }.studio-page .s-manifesto-main h2 { max-width: 760px; margin: 0; font-family: 'DM Serif Display'; font-size: clamp(40px, 5vw, 70px); font-weight: 400; line-height: 1.05; }.studio-page .s-manifesto-main h2 em { color: var(--amber); }.studio-page .s-manifesto-main>p { max-width: 640px; margin: 27px 0 0; color: var(--muted); font-size: 16px; line-height: 1.9; }.studio-page .principles { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 45px; }.studio-page .principle { padding: 21px 17px; border: 1px solid var(--line); background: var(--soft); }.studio-page .principle b { display: block; font-size: 13px; }.studio-page .principle span { display: block; margin-top: 9px; color: var(--muted); font-size: 11px; line-height: 1.65; }
+      .studio-page .cap-grid,.studio-page .team-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }.studio-page .cap { position: relative; min-height: 285px; padding: 22px 19px; overflow: hidden; border: 1px solid var(--line); transition: transform .45s var(--ease), border-color .4s; }.studio-page .cap:hover { transform: translateY(-8px); border-color: rgba(245,185,66,.65); }.studio-page .cap:after { content: ''; position: absolute; right: -70px; bottom: -70px; width: 150px; height: 150px; border: 1px solid rgba(245,185,66,.2); border-radius: 50%; }.studio-page .cap-num { color: var(--amber); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; }.studio-page .cap h3 { margin: 44px 0 13px; font-family: 'DM Serif Display'; font-size: 28px; font-weight: 400; }.studio-page .cap p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; }.studio-page .cap-arrow { position: absolute; right: 20px; bottom: 18px; color: var(--amber); font-size: 18px; }
+      .studio-page .service-selector { display: grid; grid-template-columns: .75fr 1.25fr; gap: 48px; align-items: stretch; }.studio-page .service-tabs { border-top: 1px solid var(--line); }.studio-page .service-tab { display: grid; grid-template-columns: 42px 1fr auto; gap: 14px; align-items: center; width: 100%; padding: 22px 15px; border: 0; border-bottom: 1px solid var(--line); color: var(--muted); text-align: left; cursor: pointer; transition: .35s var(--ease); }.studio-page .service-tab:hover,.studio-page .service-tab.active { padding-left: 24px; color: var(--text); background: rgba(245,185,66,.06); }.studio-page .service-tab.active { border-left: 2px solid var(--amber); }.studio-page .service-tab-index { color: var(--amber); font-size: 10px; letter-spacing: .15em; }.studio-page .service-tab-title { font-family: 'Bebas Neue'; font-size: 25px; letter-spacing: .04em; }.studio-page .service-tab-price { color: var(--muted); font-size: 9px; letter-spacing: .12em; white-space: nowrap; }.studio-page .service-detail { min-height: 470px; padding: 35px; border: 1px solid var(--line); background: radial-gradient(circle at 85% 8%,rgba(245,185,66,.15),transparent 33%),linear-gradient(145deg,rgba(245,185,66,.07),rgba(13,13,13,.95)); }.studio-page .service-detail-kicker { color: var(--amber); font-size: 10px; letter-spacing: .25em; text-transform: uppercase; }.studio-page .service-detail h3 { max-width: 600px; margin: 28px 0 18px; font-family: 'Bebas Neue'; font-size: clamp(50px,6vw,88px); font-weight: 400; line-height: .85; }.studio-page .service-detail-description { max-width: 620px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.9; }.studio-page .service-included { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 27px; }.studio-page .service-included span { padding: 9px 11px; border: 1px solid var(--line); color: var(--muted); font-size: 9px; letter-spacing: .13em; text-transform: uppercase; }.studio-page .service-pricing-title { margin-top: 38px; color: var(--amber); font-size: 10px; letter-spacing: .25em; text-transform: uppercase; }.studio-page .service-price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 9px; margin-top: 12px; }.studio-page .service-price-card { min-height: 104px; padding: 16px 13px; border: 1px solid var(--line); background: rgba(0,0,0,.22); }.studio-page .service-price-card.featured { border-color: var(--amber); background: rgba(245,185,66,.1); }.studio-page .service-price-card small { display: block; color: var(--muted); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; }.studio-page .service-price-card strong { display: block; margin-top: 12px; color: var(--text); font-family: 'Bebas Neue'; font-size: 29px; font-weight: 400; }.studio-page .service-price-card.featured strong { color: var(--amber); }.studio-page .service-price-card span { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; line-height: 1.4; }
+      .studio-page .project-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 8px; }.studio-page .project-tile { min-height: 135px; display: flex; flex-direction: column; justify-content: space-between; padding: 17px 14px; border: 1px solid var(--line); background: linear-gradient(145deg,rgba(245,185,66,.1),rgba(16,16,16,.95)); transition: transform .35s var(--ease), border-color .3s; }.studio-page .project-tile:nth-child(3n) { background: linear-gradient(145deg,rgba(255,255,255,.08),rgba(16,16,16,.95)); }.studio-page .project-tile:hover { transform: translateY(-5px); border-color: var(--amber); }.studio-page .project-tile small { color: var(--amber); font-size: 8px; letter-spacing: .14em; text-transform: uppercase; }.studio-page .project-tile strong { font-family: 'DM Serif Display'; font-size: 21px; font-weight: 400; }.studio-page .project-tile span { color: var(--muted); font-size: 9px; }
+      .studio-page .work-list { border-top: 1px solid var(--line); }.studio-page .work-row { display: grid; grid-template-columns: 65px 1fr 1fr auto; gap: 24px; align-items: center; padding: 27px 0; border-bottom: 1px solid var(--line); transition: padding .4s var(--ease), background .35s; }.studio-page .work-row:hover { padding-inline: 18px; background: rgba(245,185,66,.04); }.studio-page .work-num { color: var(--amber); font-size: 10px; letter-spacing: .2em; }.studio-page .work-name { font-family: 'Bebas Neue'; font-size: 45px; line-height: .9; }.studio-page .work-type { color: var(--muted); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }.studio-page .work-result { color: var(--amber); font-size: 11px; font-weight: 700; text-align: right; white-space: nowrap; }.studio-page .work-row.live .work-name:after { content: 'LIVE'; display: inline-block; margin-left: 11px; padding: 5px 7px; border: 1px solid var(--amber); color: var(--amber); font-family: Manrope; font-size: 8px; letter-spacing: .18em; vertical-align: middle; }.studio-page .work-row.upcoming { opacity: .62; }.studio-page .work-row.upcoming .work-name:after { content: 'UPCOMING'; display: inline-block; margin-left: 11px; padding: 5px 7px; border: 1px solid var(--line); color: var(--muted); font-family: Manrope; font-size: 8px; letter-spacing: .18em; vertical-align: middle; }
+      .studio-page .process-grid { display: grid; grid-template-columns: repeat(4,1fr); border-block: 1px solid var(--line); }.studio-page .process { min-height: 225px; padding: 24px 18px; border-right: 1px solid var(--line); }.studio-page .process:last-child { border-right: 0; }.studio-page .process strong { font-family: 'Bebas Neue'; font-size: 56px; font-weight: 400; color: var(--amber); }.studio-page .process h3 { margin: 26px 0 10px; font-size: 16px; }.studio-page .process p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.75; }
+      .studio-page .person { position: relative; min-height: 330px; display: flex; flex-direction: column; justify-content: end; padding: 20px; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(160deg,rgba(245,185,66,.15),rgba(18,18,18,.8) 47%,#101010); transition: transform .4s var(--ease), border-color .3s; }.studio-page .person:nth-child(2){background:linear-gradient(160deg,rgba(255,255,255,.11),rgba(18,18,18,.8) 47%,#101010)}.studio-page .person:nth-child(3){background:linear-gradient(160deg,rgba(245,185,66,.22),rgba(18,18,18,.8) 47%,#101010)}.studio-page .person:nth-child(4){background:linear-gradient(160deg,rgba(245,185,66,.08),rgba(18,18,18,.8) 47%,#101010)}.studio-page .person:hover{transform:translateY(-7px);border-color:rgba(245,185,66,.6)}.studio-page .person:before{content:attr(data-initials);position:absolute;top:10px;right:16px;font-family:'Bebas Neue';font-size:120px;color:rgba(245,185,66,.13);line-height:1}.studio-page .person-index{position:absolute;top:20px;left:20px;color:var(--amber);font-size:10px;letter-spacing:.2em}.studio-page .person h3{margin:0;font-size:21px}.studio-page .person p{margin:5px 0 0;color:var(--amber);font-size:10px;letter-spacing:.14em;text-transform:uppercase}.studio-page .person small{margin-top:17px;color:var(--muted);font-size:11px;line-height:1.6}
+      .studio-page .quotes { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }.studio-page .quote { padding: 30px; border: 1px solid var(--line); background: var(--soft); }.studio-page .quote-mark { color: var(--amber); font-family: 'DM Serif Display'; font-size: 65px; line-height: .6; }.studio-page .quote p { margin: 28px 0 25px; font-family: 'DM Serif Display'; font-style: italic; font-size: 24px; line-height: 1.25; }.studio-page .quote footer { border-top: 1px solid var(--line); padding-top: 15px; color: var(--muted); font-size: 11px; }.studio-page .quote footer strong { display: block; margin-bottom: 4px; color: var(--ink); font-size: 13px; }
+      .studio-page .contact { padding-bottom: 75px; }.studio-page .contact-box { position: relative; overflow: hidden; padding: 55px; border: 1px solid rgba(245,185,66,.35); background: radial-gradient(circle at 88% 24%,rgba(245,185,66,.2),transparent 25%),linear-gradient(135deg,rgba(245,185,66,.12),rgba(15,15,15,.9)); }.studio-page .contact-box:after { content: 'MAKE SOMETHING REAL'; position: absolute; right: -4%; bottom: -13%; font-family: 'Bebas Neue'; font-size: clamp(55px,8vw,125px); color: rgba(245,185,66,.06); white-space: nowrap; }.studio-page .contact-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr .8fr; gap: 50px; align-items: end; }.studio-page .contact h2 { margin: 0; max-width: 620px; font-family: 'Bebas Neue'; font-size: clamp(62px,8vw,115px); font-weight: 400; line-height: .82; }.studio-page .contact h2 span { color: var(--amber); }.studio-page .contact-side { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }.studio-page .contact-side p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.75; }.studio-page .email { color: var(--amber); font-size: 15px; border-bottom: 1px solid rgba(245,185,66,.4); padding-bottom: 6px; }
+      .studio-page .site-footer { padding: 24px 0 45px; border-top: 1px solid var(--line); }.studio-page .footer-inner { display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }.studio-page .footer-links { display: flex; gap: 22px; }.studio-page .footer-links a:hover { color: var(--amber); }.studio-page .reveal { opacity: 0; transform: translateY(28px); transition: opacity .85s var(--ease),transform .85s var(--ease); }.studio-page .reveal.visible { opacity: 1; transform: none; }
+      .studio-page .contact-reference { position: relative; z-index: 1; display: grid; grid-template-columns: .84fr 1.16fr; gap: 86px; align-items: start; }.studio-page .contact-reference h2 { max-width: 460px; margin: 0; font-family: 'Bebas Neue'; font-size: clamp(65px, 8vw, 116px); font-weight: 400; line-height: .82; }.studio-page .contact-reference h2 span { color: var(--amber); }.studio-page .contact-reference-copy { max-width: 410px; margin: 32px 0 0; color: var(--muted); font-size: 15px; line-height: 1.85; }.studio-page .contact-reference-links { margin-top: 56px; border-top: 1px solid var(--line); }.studio-page .contact-reference-link { display: flex; align-items: center; gap: 16px; padding: 17px 0; border-bottom: 1px solid var(--line); color: var(--text); font-size: 14px; }.studio-page .contact-reference-link:hover { color: var(--amber); }.studio-page .contact-reference-icon { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--line); color: var(--amber); }.studio-page .contact-reference-link small { display: block; margin-bottom: 2px; color: var(--muted); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; }.studio-page .reference-form { display: grid; grid-template-columns: 1fr 1fr; gap: 0 34px; }.studio-page .reference-field { margin-bottom: 30px; }.studio-page .reference-field.full { grid-column: 1 / -1; }.studio-page .reference-field label { display: block; margin-bottom: 15px; color: var(--muted); font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }.studio-page .reference-field input,.studio-page .reference-field select,.studio-page .reference-field textarea { width: 100%; padding: 0 0 15px; border: 0; border-bottom: 1px solid var(--line); outline: 0; background: transparent; color: var(--text); font: inherit; font-size: 15px; transition: border-color .3s; }.studio-page .reference-field textarea { min-height: 128px; resize: vertical; }.studio-page .reference-field select { appearance: none; cursor: pointer; }.studio-page .reference-field select option { background: #111; color: var(--text); }.studio-page .reference-field input:focus,.studio-page .reference-field select:focus,.studio-page .reference-field textarea:focus { border-color: var(--amber); }.studio-page .reference-submit { display: flex; align-items: center; gap: 22px; margin-top: 5px; }.studio-page .reference-submit .s-btn { cursor: pointer; }.studio-page .reference-submit span { color: var(--muted); font-size: 11px; }
+      @media(max-width:900px){.studio-page .s-hero-grid{grid-template-columns:1fr;gap:30px}.studio-page .s-art{min-height:430px;max-width:590px}.studio-page .s-manifesto{grid-template-columns:1fr;gap:35px}.studio-page .cap-grid,.studio-page .team-grid{grid-template-columns:repeat(2,1fr)}.studio-page .offers-grid{grid-template-columns:1fr 1fr}.studio-page .project-grid{grid-template-columns:repeat(3,1fr)}.studio-page .process-grid{grid-template-columns:repeat(2,1fr)}.studio-page .process:nth-child(2){border-right:0}.studio-page .process:nth-child(-n+2){border-bottom:1px solid var(--line)}.studio-page .contact-grid{grid-template-columns:1fr}}
+      @media(max-width:620px){.studio-page .nav-inner,.studio-page .section-inner{width:calc(100% - 30px)}.studio-page .s-links{display:none}.studio-page .s-hero{padding-top:105px}.studio-page .s-hero h1{font-size:clamp(68px,18vw,110px)}.studio-page .s-stats{gap:17px}.studio-page .s-stats strong{font-size:22px}.studio-page .s-art{min-height:355px}.studio-page .s-card{inset:13% 0 8%;padding:20px}.studio-page .s-note{left:0}.studio-page .s-head{display:block}.studio-page .s-head p{margin-top:18px}.studio-page .s-section{padding:85px 0}.studio-page .cap-grid,.studio-page .team-grid,.studio-page .offers-grid,.studio-page .quotes,.studio-page .process-grid{grid-template-columns:1fr}.studio-page .project-grid{grid-template-columns:repeat(2,1fr)}.studio-page .cap{min-height:240px}.studio-page .process{border-right:0!important;border-bottom:1px solid var(--line)}.studio-page .process:last-child{border-bottom:0}.studio-page .work-row{grid-template-columns:35px 1fr;gap:15px}.studio-page .work-type{display:none}.studio-page .work-result{grid-column:2;text-align:left;margin-top:-15px}.studio-page .work-name{font-size:37px}.studio-page .contact-box{padding:30px 22px}.studio-page .contact-side{margin-top:15px}.studio-page .footer-inner{flex-direction:column;align-items:flex-start}.studio-page .footer-links{gap:14px;flex-wrap:wrap}}
+      @media(max-width:900px){.studio-page .contact-reference{grid-template-columns:1fr;gap:45px}}
+      @media(max-width:620px){.studio-page .reference-form{grid-template-columns:1fr}.studio-page .reference-field.full{grid-column:auto}.studio-page .reference-submit{align-items:flex-start;flex-direction:column}.studio-page .contact-reference h2{font-size:clamp(65px,18vw,105px)}}
+      @media(max-width:900px){.studio-page .service-selector{grid-template-columns:1fr;gap:25px}}
+      @media(max-width:620px){.studio-page .service-tab{grid-template-columns:32px 1fr auto;padding:17px 10px}.studio-page .service-tab-title{font-size:21px}.studio-page .service-detail{padding:23px;min-height:0}.studio-page .service-price-grid{grid-template-columns:1fr}.studio-page .service-detail h3{font-size:58px}}
+      @media(prefers-reduced-motion:reduce){.studio-page *{animation-duration:.01ms!important;transition-duration:.01ms!important}.studio-page .reveal{opacity:1;transform:none}}
+
+      @media (max-width: 980px) {
+        .hero-inner,
+        .cta-grid,
+        .services-grid,
+        .work-grid,
+        .process-grid,
+        .quote-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .hero-inner { grid-template-columns: 1fr; }
+        .hero-visual { order: -1; }
+      }
+
+      @media (max-width: 760px) {
+        .nav { display: none; }
+
+        .hero {
+          padding-top: 18px;
+        }
+
+        .services-grid,
+        .work-grid,
+        .process-grid,
+        .quote-grid,
+        .cta-grid,
+        .mini-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head {
+          display: block;
+        }
+
+        .topbar-inner {
+          min-height: 70px;
+        }
+
+        .nav-cta { display: none; }
+
+        .hero-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+          width: 100%;
+        }
+
+        .footer-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="studio-page" id="falah-20">
+      <div class="intro" id="studioIntro"><div class="intro-inner"><div class="intro-mark">◆</div><p>Falah Studios / 02</p><div class="intro-line"></div></div></div>
+      <div class="grain"></div><div class="cursor-dot" id="studioDot"></div><div class="cursor-ring" id="studioRing"></div><div class="cursor-label" id="studioCursorLabel">Explore</div>
+      <header class="site-nav" id="studioNav"><div class="nav-inner"><a class="s-brand magnetic" href="#studioTop" data-cursor="Home"><div class="s-mark"><span>◆</span></div><span>Falah <em>Studios</em></span></a><nav class="s-links"><a href="#studio">Studio</a><a href="#capabilities">Capabilities</a><a href="#work">Work</a><a href="#team">Team</a></nav><a class="s-cta magnetic" href="#contact" data-cursor="Talk">Start a project</a></div></header>
+      <main id="studioTop">
+        <section class="s-hero"><div class="section-inner s-hero-grid"><div class="s-copy reveal"><div class="s-eyebrow">UAE creative technology studio</div><h1>Make it <span class="gold">matter.</span><span class="serif">make it move.</span></h1><p class="s-lead">We build brands, digital experiences, and smart systems for people with something worth saying. Small team. Big attention. No empty polish.</p><div class="s-actions"><a class="s-btn primary magnetic" href="#contact" data-cursor="Build">Build with us ↗</a><a class="s-btn magnetic" href="#work" data-cursor="Work">Explore the work</a></div><div class="s-stats"><div><strong>150+</strong><span>Projects shipped</span></div><div><strong>06</strong><span>Disciplines</span></div><div><strong>01</strong><span>Obsessive standard</span></div></div></div><div class="s-art reveal"><div class="s-orbit"></div><div class="s-card"><div class="s-card-title">Ideas<br><em>in motion.</em></div><div class="s-card-rule"></div><div class="s-card-foot"><span>Strategy · Design · Systems</span><span>Dubai / UAE</span></div></div><div class="s-note">Currently building →</div></div></div></section>
+        <div class="s-marquee"><div class="s-marquee-track"><div class="s-marquee-item"><b>✦</b> Brand systems</div><div class="s-marquee-item">Digital experiences <b>✦</b></div><div class="s-marquee-item">Growth infrastructure <b>✦</b></div><div class="s-marquee-item">Content that lands <b>✦</b></div><div class="s-marquee-item"><b>✦</b> Brand systems</div><div class="s-marquee-item">Digital experiences <b>✦</b></div><div class="s-marquee-item">Growth infrastructure <b>✦</b></div><div class="s-marquee-item">Content that lands <b>✦</b></div></div></div>
+        <section class="s-section dark" id="studio"><div class="section-inner s-manifesto"><aside class="s-aside reveal"><strong>The studio</strong><p>Falah Studios is an independent creative technology studio founded in the UAE. We turn ambitious ideas into brands, websites, content, and systems people can actually use.</p></aside><div class="s-manifesto-main reveal"><h2>We are here to make good businesses feel <em>unmistakable.</em></h2><p>From the first introduction to the final interaction, every part of the experience should carry intention. We combine commercial thinking with obsessive craft so your business can earn attention and keep it.</p><div class="principles"><div class="principle"><b>10+ projects</b><span>Growing proof across brands, websites, content, and digital systems.</span></div><div class="principle"><b>People first</b><span>Clear communication, honest collaboration, and no mystery in the process.</span></div><div class="principle"><b>Built for motion</b><span>Every launch is designed to create the next opportunity, not just a pretty moment.</span></div></div></div></div></section>
+        <section class="s-section" id="capabilities"><div class="section-inner"><div class="s-head reveal"><div><div class="s-kicker">What we do</div><h2>One studio.<br>Many ways to move.</h2></div><p>Choose the pressure point. We bring the right mix of strategy, design, technology, and growth to solve it.</p></div><div class="cap-grid"><article class="cap reveal"><div class="cap-num">01 / Position</div><h3>Brand strategy</h3><p>Positioning, identity, verbal systems, and the sharp point of view your business has been missing.</p><div class="cap-arrow">↗</div></article><article class="cap reveal"><div class="cap-num">02 / Experience</div><h3>Web &amp; product</h3><p>Websites and digital products that feel considered, move quickly, and turn attention into action.</p><div class="cap-arrow">↗</div></article><article class="cap reveal"><div class="cap-num">03 / Systems</div><h3>Automation</h3><p>Simple, intelligent workflows that remove repetitive work and give your team time back.</p><div class="cap-arrow">↗</div></article><article class="cap reveal"><div class="cap-num">04 / Signal</div><h3>Content &amp; growth</h3><p>Campaigns, social systems, and content direction that make your brand impossible to scroll past.</p><div class="cap-arrow">↗</div></article></div></div></section>
+        <section class="s-section dark" id="offers"><div class="section-inner"><div class="s-head reveal"><div><div class="s-kicker">Offers &amp; pricing</div><h2>Start focused.<br>Scale when ready.</h2></div><p>Clear starting points for different stages of the journey. Every offer can be tailored after the first conversation.</p></div><div class="offers-grid"><article class="offer reveal"><span class="offer-badge">Best for clarity</span><span class="offer-note">01 / Sprint</span><h3>Signal Sprint</h3><p>A focused strategy reset for founders who need a sharper position and a plan they can act on.</p><div class="offer-price">AED 2,500</div><ul><li>90-minute discovery session</li><li>Positioning direction</li><li>Offer and audience map</li><li>7-day action plan</li></ul></article><article class="offer featured reveal"><span class="offer-badge">Most popular</span><span class="offer-note">02 / Launch</span><h3>Brand Launch</h3><p>A complete identity and premium website foundation for businesses ready to be taken seriously.</p><div class="offer-price">AED 7,500+</div><ul><li>Brand direction and visual identity</li><li>Conversion-focused website</li><li>Copy structure and content guidance</li><li>Launch support</li></ul></article><article class="offer reveal"><span class="offer-badge">Best for momentum</span><span class="offer-note">03 / Growth</span><h3>Growth System</h3><p>An ongoing creative and digital partner for teams that want to keep shipping better work.</p><div class="offer-price">AED 3,500 / mo</div><ul><li>Monthly creative direction</li><li>Content and social systems</li><li>Automation improvements</li><li>Performance review and iteration</li></ul></article></div></div></section>
+        <section class="s-section dark" id="work"><div class="section-inner"><div class="s-head reveal"><div><div class="s-kicker">Selected work</div><h2>Real work.<br>Real momentum.</h2></div><p>10+ projects across digital, brand, content, and systems. One live, two about to begin, and a growing archive of work delivered.</p></div><div class="work-list"><a class="work-row live reveal magnetic" href="https://trunkino.com" target="_blank" rel="noreferrer" data-cursor="Open"><span class="work-num">01</span><span class="work-name">Trunkino</span><span class="work-type">Brand / E-commerce / UAE</span><span class="work-result">Live now ↗</span></a><div class="work-row upcoming reveal"><span class="work-num">02</span><span class="work-name">AVELE</span><span class="work-type">Luxury lifestyle / Identity</span><span class="work-result">Coming soon</span></div><div class="work-row upcoming reveal"><span class="work-num">03</span><span class="work-name">COSMA</span><span class="work-type">Future brand / Digital world</span><span class="work-result">Coming soon</span></div></div><div class="project-grid" style="margin-top: 24px;"><div class="project-tile reveal"><small>04 / Identity</small><strong>Rove House</strong><span>Brand direction</span></div><div class="project-tile reveal"><small>05 / Web</small><strong>Meridian</strong><span>Digital experience</span></div><div class="project-tile reveal"><small>06 / Content</small><strong>Oryn</strong><span>Social launch</span></div><div class="project-tile reveal"><small>07 / Growth</small><strong>Northline</strong><span>Campaign system</span></div><div class="project-tile reveal"><small>08 / Web</small><strong>Kindred</strong><span>Conversion site</span></div><div class="project-tile reveal"><small>09 / Systems</small><strong>Loopline</strong><span>Automation build</span></div><div class="project-tile reveal"><small>10 / Brand</small><strong>Veya</strong><span>Identity refresh</span></div><div class="project-tile reveal"><small>11 / Content</small><strong>Solace</strong><span>Launch campaign</span></div><div class="project-tile reveal"><small>12 / Strategy</small><strong>Forma</strong><span>Growth direction</span></div></div></div></section>
+        <section class="s-section" id="process"><div class="section-inner"><div class="s-head reveal"><div><div class="s-kicker">How we work</div><h2>Good work has<br>a rhythm.</h2></div><p>Less theatre. More thinking, making, testing, and getting the important things right.</p></div><div class="process-grid"><article class="process reveal"><strong>01</strong><h3>Find the signal</h3><p>We ask better questions until the real opportunity is visible.</p></article><article class="process reveal"><strong>02</strong><h3>Shape the story</h3><p>We turn insight into a clear position, language, and direction.</p></article><article class="process reveal"><strong>03</strong><h3>Make the thing</h3><p>We design and build with enough detail to make it feel inevitable.</p></article><article class="process reveal"><strong>04</strong><h3>Keep it moving</h3><p>We launch, learn, and improve until the work earns its place.</p></article></div></div></section>
+        <section class="s-section dark" id="team"><div class="section-inner"><div class="s-head reveal"><div><div class="s-kicker">The people behind it</div><h2>Small team.<br>Full ownership.</h2></div><p>Every project is senior-led and hands-on. The people in the room are the people doing the work.</p></div><div class="team-grid"><article class="person reveal" data-initials="FA"><span class="person-index">01</span><h3>Falah Ali Ahmed Hamdan Alzeyoudi</h3><p>CEO · Founder · Software Engineer</p><small>Sets the standard, connects the dots, and turns ambitious ideas into things people can use.</small></article><article class="person reveal" data-initials="MA"><span class="person-index">02</span><h3>Mohammed Ahmed Khalifa Aldhaheri</h3><p>CFO</p><small>Builds the financial discipline and operational clarity that keeps the studio moving with confidence.</small></article><article class="person reveal" data-initials="HS"><span class="person-index">03</span><h3>Hamdan Salem Abdulla Aldhanhani</h3><p>Social Media Manager</p><small>Finds the human story, builds the signal, and gives every brand a reason to be remembered.</small></article><article class="person reveal" data-initials="SB"><span class="person-index">04</span><h3>Sulieman Binhyder</h3><p>Creative Director</p><small>Brings the visual world to life, from the first rough thought to the final precise detail.</small></article></div></div></section>
+        <section class="s-section"><div class="section-inner"><div class="s-head reveal"><div><div class="s-kicker">A few kind words</div><h2>We leave things<br>better than we found them.</h2></div></div><div class="quotes"><blockquote class="quote reveal"><div class="quote-mark">“</div><p>Falah Studios understood the business behind the brief. The result felt like us, only clearer, sharper, and ready to grow.</p><footer><strong>Trunkino team</strong>Founder-led specialty coffee brand</footer></blockquote><blockquote class="quote reveal"><div class="quote-mark">“</div><p>The rare kind of creative partner that can talk vision in the morning and ship a working system by the afternoon.</p><footer><strong>Private client</strong>UAE growth-stage business</footer></blockquote></div></div></section>
+        <section class="s-section contact" id="contact"><div class="section-inner"><div class="contact-box reveal"><div class="contact-grid"><div><div class="s-kicker">Have a good problem?</div><h2>Let’s make it <span>matter.</span></h2></div><div class="contact-side"><p>Tell us what you are building, where it is stuck, and where you want it to go. We’ll come back with a point of view.</p><a class="email magnetic" href="mailto:contact.falahstudios@gmail.com" data-cursor="Email">contact.falahstudios@gmail.com ↗</a><a class="s-btn primary magnetic" href="mailto:contact.falahstudios@gmail.com" data-cursor="Start">Start the conversation</a></div></div></div></div></section>
+      </main>
+      <footer class="site-footer"><div class="section-inner footer-inner"><span>© 2026 Falah Studios · UAE</span><div class="footer-links"><a href="https://www.instagram.com/falahstudios/" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.tiktok.com/@falahstudios" target="_blank" rel="noreferrer">TikTok</a><a href="#studioTop">Back to top ↑</a></div></div></footer>
+    </div>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="#top" aria-label="Falah Studios home">
+          <div class="brand-mark">◆</div>
+          <div class="brand-text">
+            <small>Falah</small>
+            <strong>Studios</strong>
+          </div>
+        </a>
+
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#capabilities">Capabilities</a>
+          <a href="#work">Work</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
+          <a class="nav-cta" href="#contact">Book a call</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-inner">
+          <div>
+            <div class="eyebrow">Creative systems for ambitious brands</div>
+            <h1>
+              We build
+              <span class="highlight">momentum.</span>
+            </h1>
+            <p class="lead">
+              Strategy, branding, websites, automation, and digital infrastructure that help businesses look premium, move faster, and convert more.
+            </p>
+
+            <div class="hero-actions">
+              <a class="primary-btn" href="#contact">Start your project</a>
+              <a class="secondary-btn" href="#work">See our work</a>
+            </div>
+
+            <div class="mini-stats" aria-label="Key statistics">
+              <div class="mini-stat">
+                <strong>150+</strong>
+                <span>Launches</span>
+              </div>
+              <div class="mini-stat">
+                <strong>8Y</strong>
+                <span>Building digitally</span>
+              </div>
+              <div class="mini-stat">
+                <strong>98%</strong>
+                <span>Retention</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Dashboard visualization">
+            <div class="visual-shell">
+              <div class="visual-top">
+                <div class="window-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="live-pill">Live growth board</div>
+              </div>
+
+              <div class="visual-card">
+                <div class="card-label">Brand momentum</div>
+                <div class="score-row">
+                  <strong>89</strong>
+                  <span style="color: var(--amber); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;">/100</span>
+                </div>
+                <div class="bar"><span></span></div>
+
+                <div class="mini-grid">
+                  <div class="item">
+                    <small>Sales lift</small>
+                    <strong>+58%</strong>
+                  </div>
+                  <div class="item">
+                    <small>Clarity</small>
+                    <strong>A+</strong>
+                  </div>
+                </div>
+
+                <div style="margin-top: 16px; border: 1px solid rgba(245,185,66,0.25); background: rgba(245,185,66,0.08); border-radius: 18px; padding: 16px;">
+                  <div style="display: flex; justify-content: space-between; color: rgba(255,255,255,0.8); font-size: 13px;">
+                    <span>Launch sprint</span>
+                    <span style="color: var(--amber);">14 days</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px;">
+                    <span style="padding: 7px 9px; border: 1px solid rgba(245,185,66,0.35); border-radius: 999px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber);">Strategy</span>
+                    <span style="padding: 7px 9px; border: 1px solid rgba(245,185,66,0.35); border-radius: 999px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber);">Design</span>
+                    <span style="padding: 7px 9px; border: 1px solid rgba(245,185,66,0.35); border-radius: 999px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber);">System</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ticker" aria-label="Partner brands">
+        <div class="ticker-track">
+          <div class="gold">AER</div>
+          <span>NEXA</span>
+          <div class="gold">VANTA</div>
+          <span>ATLAS</span>
+          <div class="gold">SUMMIT</div>
+          <span>LUMA</span>
+          <div class="gold">AER</div>
+          <span>NEXA</span>
+          <div class="gold">VANTA</div>
+          <span>ATLAS</span>
+          <div class="gold">SUMMIT</div>
+          <span>LUMA</span>
+        </div>
+      </div>
+
+      <section class="services" id="capabilities">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="kicker">Capabilities</div>
+              <h2>Strategy, design, and systems built to accelerate you.</h2>
+            </div>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <div class="num">01</div>
+              <h3>Brand Positioning</h3>
+              <p>Identity, message, and market clarity that make your company feel premium before the first call even starts.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="num">02</div>
+              <h3>Web Systems</h3>
+              <p>High-converting web experiences designed for clarity, trust, and results.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="num">03</div>
+              <h3>Growth Automation</h3>
+              <p>Workflow systems that save time, remove bottlenecks, and help teams execute faster.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="num">04</div>
+              <h3>Content Engine</h3>
+              <p>Campaigns, visuals, and stories built to keep your brand visible and memorable.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="approach" id="process">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="kicker">Process</div>
+              <h2>A sharper system. A cleaner outcome.</h2>
+            </div>
+          </div>
+
+          <div class="process-grid">
+            <div class="process-card">
+              <div class="n">01</div>
+              <p>Diagnose the actual opportunity and define the ambition.</p>
+            </div>
+
+            <div class="process-card">
+              <div class="n">02</div>
+              <p>Shape the story, market position, and offer into a clear strategy.</p>
+            </div>
+
+            <div class="process-card">
+              <div class="n">03</div>
+              <p>Design the experience so the brand feels premium and the user flows naturally.</p>
+            </div>
+
+            <div class="process-card">
+              <div class="n">04</div>
+              <p>Launch, measure, refine, and turn attention into real traction.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="work">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="kicker">Selected work</div>
+              <h2>Results that changed how the business moves.</h2>
+            </div>
+            <a href="#contact" class="secondary-btn" style="max-width: fit-content;">Start a project</a>
+          </div>
+
+          <div class="work-grid">
+            <article class="project-card">
+              <div class="project-preview">
+                <div>
+                  <div class="meta">Brand + website</div>
+                  <h3>Aster Labs</h3>
+                </div>
+                <div class="tag">Case study</div>
+              </div>
+              <div class="project-info">
+                <strong>+340% pipeline</strong>
+                <a href="#contact">Read more →</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-preview alt">
+                <div>
+                  <div class="meta">Digital identity</div>
+                  <h3>North Vale</h3>
+                </div>
+                <div class="tag">Rebrand</div>
+              </div>
+              <div class="project-info">
+                <strong>3.1x lead quality</strong>
+                <a href="#contact">Read more →</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-preview alt-2">
+                <div>
+                  <div class="meta">Automation system</div>
+                  <h3>Summit Loop</h3>
+                </div>
+                <div class="tag">System build</div>
+              </div>
+              <div class="project-info">
+                <strong>11h saved/week</strong>
+                <a href="#contact">Read more →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonials">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="kicker">Client notes</div>
+              <h2>The kind of partner that makes the work feel sharper.</h2>
+            </div>
+          </div>
+
+          <div class="quote-grid">
+            <article class="quote">
+              <div class="mark">“</div>
+              <p>They made our company feel deeper and more expensive. The work didn’t just look good — it changed how we sell.</p>
+              <footer>
+                <strong>Noura K.</strong>
+                <span>Founder, Aster Labs</span>
+              </footer>
+            </article>
+
+            <article class="quote">
+              <div class="mark">“</div>
+              <p>This is the first time we’ve had a partner that understands both the design and the business side of growth.</p>
+              <footer>
+                <strong>Hamid A.</strong>
+                <span>CMO, North Vale</span>
+              </footer>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="cta-box">
+            <div class="cta-grid">
+              <div>
+                <div class="kicker">Ready when you are</div>
+                <h2>Build a brand people trust before they even meet you.</h2>
+              </div>
+
+              <div class="cta-side">
+                <div class="cta-card">
+                  <small>Email</small>
+                  <a href="mailto:hello@falahstudios.com">hello@falahstudios.com</a>
+                </div>
+
+                <div class="cta-card">
+                  <small>Availability</small>
+                  <strong>Strategy call · 30 minutes</strong>
+                </div>
+
+                <a href="mailto:hello@falahstudios.com" class="primary-btn" style="justify-self: start;">Start the conversation</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div>© 2026 Falah Studios</div>
+        <div class="footer-links">
+          <a href="#capabilities">Capabilities</a>
+          <a href="#work">Work</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const intro = document.getElementById('studioIntro');
+      const studioNav = document.getElementById('studioNav');
+      const studioPage = document.querySelector('.studio-page');
+      const heroStats = studioPage?.querySelector('.s-stats');
+      heroStats?.remove();
+      const inventedProjects = studioPage?.querySelector('.project-grid');
+      inventedProjects?.remove();
+
+      const capabilityGrid = studioPage?.querySelector('#capabilities .cap-grid');
+      const capabilityKicker = studioPage?.querySelector('#capabilities .s-kicker');
+      if (capabilityKicker) capabilityKicker.textContent = 'Six ways we grow a business';
+      const liveProject = studioPage?.querySelector('#work .work-row.live');
+      if (liveProject) {
+        liveProject.href = 'https://trunkinocoffee.com';
+        const projectName = liveProject.querySelector('.work-name');
+        if (projectName) projectName.textContent = 'Trunkino Coffee';
+      }
+      if (capabilityGrid) {
+        capabilityGrid.innerHTML = `
+          <article class="cap reveal"><div class="cap-num">01 / From AED 500</div><h3>Web Development</h3><p>Custom websites, web applications, e-commerce, landing pages, booking systems, ordering systems, and WhatsApp integration.</p><div class="cap-arrow">&#8599;</div></article>
+          <article class="cap reveal"><div class="cap-num">02 / From AED 300</div><h3>Branding</h3><p>Logo design, color systems, typography, brand guidelines, and social templates that make your business recognizable.</p><div class="cap-arrow">&#8599;</div></article>
+          <article class="cap reveal"><div class="cap-num">03 / From AED 250</div><h3>Content Creation</h3><p>Product photography, short-form video, Instagram reels, monthly delivery, and branded graphics.</p><div class="cap-arrow">&#8599;</div></article>
+          <article class="cap reveal"><div class="cap-num">04 / From AED 400</div><h3>Marketing</h3><p>Paid advertising on Meta, Google, and TikTok to bring consistent new customers to your business.</p><div class="cap-arrow">&#8599;</div></article>
+          <article class="cap reveal"><div class="cap-num">05 / From AED 300</div><h3>Automation</h3><p>AI chatbots, WhatsApp workflows, ordering systems, lead follow-up, and booking systems that work 24/7.</p><div class="cap-arrow">&#8599;</div></article>
+          <article class="cap reveal"><div class="cap-num">06 / From AED 350</div><h3>Digital Growth</h3><p>Social media, SEO, analytics, strategy reviews, and monthly reporting to keep your audience growing.</p><div class="cap-arrow">&#8599;</div></article>`;
+      }
+
+      const offers = studioPage?.querySelector('#offers .offers-grid');
+      if (offers) {
+        offers.innerHTML = `
+          <article class="offer reveal"><span class="offer-badge">Web Development</span><span class="offer-note">Three tiers</span><h3>Web Development</h3><p>Websites built around your customers, from brochure sites to full ordering and e-commerce systems.</p><div class="offer-price">AED 500<small>Starter · 3-page brochure site</small></div><ul><li>Standard: AED 900 · 5-page custom design</li><li>Pro: AED 1,500 · full e-commerce or ordering build</li><li>Mobile-first build with 30-day support</li></ul></article>
+          <article class="offer featured reveal"><span class="offer-badge">Complete package</span><span class="offer-note">Monthly plan</span><h3>Digital Business</h3><p>Website, branding, content, social media, advertising, automation, AI chatbot, and priority support.</p><div class="offer-price">AED 999<small>per month</small></div><ul><li>One team and one strategy</li><li>Scope tailored to your business</li><li>Final plan agreed before payment</li></ul></article>
+          <article class="offer reveal"><span class="offer-badge">Digital Growth</span><span class="offer-note">Starting at</span><h3>Growth Services</h3><p>Paid ads, social media, SEO, analytics, strategy reviews, and monthly reporting.</p><div class="offer-price">AED 350<small>starting price</small></div><ul><li>Meta, Google, and TikTok ads</li><li>Social and search growth</li><li>Performance tracking and reviews</li></ul></article>`;
+      }
+
+      const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
+      const arabicMode = requestedLanguage !== 'en';
+      document.documentElement.lang = arabicMode ? 'ar' : 'en';
+      if (studioPage) studioPage.dir = arabicMode ? 'rtl' : 'ltr';
+      const arabicText = {
+        'Falah': 'فلاح', 'Studios': 'ستوديوز', 'Studio': 'الاستوديو', 'Capabilities': 'الخدمات', 'Work': 'الأعمال', 'Team': 'الفريق', 'Start a project': 'ابدأ مشروعاً', 'UAE creative technology studio': 'استوديو تقني إبداعي في الإمارات', 'Make it': 'اجعلها', 'matter.': 'مؤثرة.', 'Build with us ↗': 'ابنِ معنا ↗', 'Explore the work': 'استكشف أعمالنا', 'Currently building →': 'نبني الآن ←', 'Ideas': 'أفكار', 'in motion.': 'في حركة.', 'Strategy · Design · Systems': 'استراتيجية · تصميم · أنظمة', 'Dubai / UAE': 'دبي / الإمارات', 'Brand systems': 'أنظمة العلامات', 'Digital experiences': 'تجارب رقمية', 'Growth infrastructure': 'بنية النمو', 'Content that lands': 'محتوى مؤثر',
+        'The studio': 'الاستوديو', 'We are here to make good businesses feel': 'نحن هنا لنجعل الأعمال الجيدة تبدو', 'unmistakable.': 'لا تُنسى.', '10+ projects': 'أكثر من 10 مشاريع', 'People first': 'الناس أولاً', 'Built for motion': 'مصمم للحركة', 'Growing proof across brands, websites, content, and digital systems.': 'خبرة متنامية في العلامات والمواقع والمحتوى والأنظمة الرقمية.', 'Clear communication, honest collaboration, and no mystery in the process.': 'تواصل واضح وتعاون صادق وشفافية في كل خطوة.', 'Every launch is designed to create the next opportunity, not just a pretty moment.': 'كل إطلاق مصمم لخلق الفرصة التالية، وليس مجرد لحظة جميلة.',
+        'What we do': 'ماذا نقدم', 'One studio.': 'استوديو واحد.', 'Many ways to move.': 'طرق عديدة للنمو.', 'Choose the pressure point. We bring the right mix of strategy, design, technology, and growth to solve it.': 'حدد التحدي. ونقدم المزيج المناسب من الاستراتيجية والتصميم والتقنية والنمو لحله.', 'Six ways we grow a business': 'ست طرق لتنمية عملك', 'One studio. Every layer covered.': 'استوديو واحد. نغطي كل الجوانب.', 'From idea to full digital presence, Falah Studios handles every layer with one team and one strategy.': 'من الفكرة إلى الحضور الرقمي الكامل، يتولى فلاح ستوديوز كل جانب بفريق واحد واستراتيجية واحدة.',
+        'Web Development': 'تطوير المواقع', 'Branding': 'الهوية التجارية', 'Content Creation': 'صناعة المحتوى', 'Marketing': 'التسويق', 'Automation': 'الأتمتة', 'Digital Growth': 'النمو الرقمي', 'Custom websites, web applications, e-commerce, landing pages, booking systems, ordering systems, and WhatsApp integration.': 'مواقع مخصصة وتطبيقات ويب ومتاجر إلكترونية وصفحات هبوط وأنظمة حجز وطلب وربط واتساب.', 'Logo design, color systems, typography, brand guidelines, and social templates that make your business recognizable.': 'تصميم الشعارات وأنظمة الألوان والخطوط وإرشادات العلامة وقوالب التواصل الاجتماعي.', 'Product photography, short-form video, Instagram reels, monthly delivery, and branded graphics.': 'تصوير المنتجات والفيديو القصير وريلز إنستغرام والتسليم الشهري والتصاميم ذات الهوية.', 'Paid advertising on Meta, Google, and TikTok to bring consistent new customers to your business.': 'إعلانات مدفوعة على ميتا وجوجل وتيك توك لجذب عملاء جدد باستمرار.', 'AI chatbots, WhatsApp workflows, ordering systems, lead follow-up, and booking systems that work 24/7.': 'روبوتات محادثة بالذكاء الاصطناعي وسير عمل واتساب وأنظمة طلب ومتابعة العملاء والحجز على مدار الساعة.', 'Social media, SEO, analytics, strategy reviews, and monthly reporting to keep your audience growing.': 'وسائل التواصل الاجتماعي وتحسين محركات البحث والتحليلات ومراجعات الاستراتيجية والتقارير الشهرية.',
+        'Offers & pricing': 'العروض والأسعار', 'Services & pricing': 'الخدمات والأسعار', 'Start focused.': 'ابدأ بتركيز.', 'Scale when ready.': 'توسع عندما تكون مستعداً.', 'Clear starting points for different stages of the journey. Every offer can be tailored after the first conversation.': 'بدايات واضحة لمراحل مختلفة. يمكن تخصيص كل عرض بعد المحادثة الأولى.', 'Clear starting points.': 'بدايات واضحة.', 'Real digital growth.': 'نمو رقمي حقيقي.', 'All prices are starting points in AED and show starting points. Final pricing depends on the scope of your project.': 'جميع الأسعار هي مبالغ ابتدائية بالدرهم، والسعر النهائي يعتمد على نطاق المشروع.', 'Best for clarity': 'الأفضل للوضوح', 'Most popular': 'الأكثر طلباً', 'Best for momentum': 'الأفضل للنمو', 'Starting at': 'يبدأ من', 'Three tiers': 'ثلاث باقات', 'Complete package': 'الباقة المتكاملة', 'Monthly plan': 'خطة شهرية', 'starting price': 'السعر الابتدائي', 'per month': 'شهرياً', 'Starter: 3-page brochure site': 'المبتدئة: موقع تعريفي من 3 صفحات', 'Standard: AED 900 · 5-page custom design': 'القياسية: 900 درهم · تصميم مخصص من 5 صفحات', 'Pro: AED 1,500 · full e-commerce or ordering build': 'الاحترافية: 1,500 درهم · متجر أو نظام طلب متكامل', 'Mobile-first build with 30-day support': 'تصميم يبدأ من الهاتف مع دعم لمدة 30 يوماً', 'One team and one strategy': 'فريق واحد واستراتيجية واحدة', 'Scope tailored to your business': 'نطاق مصمم لاحتياجات عملك', 'Final plan agreed before payment': 'الاتفاق على الخطة النهائية قبل الدفع', 'Meta, Google, and TikTok ads': 'إعلانات ميتا وجوجل وتيك توك', 'Social and search growth': 'نمو اجتماعي وبحثي', 'Performance tracking and reviews': 'متابعة الأداء والمراجعات',
+        'Selected work': 'أعمال مختارة', 'Real work.': 'أعمال حقيقية.', 'Real momentum.': 'زخم حقيقي.', '10+ projects across digital, brand, content, and systems. One live, two about to begin, and a growing archive of work delivered.': 'أكثر من 10 مشاريع في مجالات الرقمنة والعلامات والمحتوى والأنظمة. مشروع مباشر وآخران قيد البدء وأرشيف متنامٍ من الأعمال المنجزة.', 'Trunkino': 'ترنكينو', 'Trunkino Coffee': 'ترنكينو كوفي', 'Brand / E-commerce / UAE': 'علامة تجارية / متجر إلكتروني / الإمارات', 'Live now ↗': 'مباشر الآن ↗', 'Luxury lifestyle / Identity': 'أسلوب حياة فاخر / هوية', 'Future brand / Digital world': 'علامة مستقبلية / عالم رقمي', 'Coming soon': 'قريباً', 'How we work': 'كيف نعمل', 'Good work has': 'العمل الجيد له', 'a rhythm.': 'إيقاع.', 'Less theatre. More thinking, making, testing, and getting the important things right.': 'استعراض أقل. تفكير وصناعة واختبار وتركيز أكبر على التفاصيل المهمة.', 'Find the signal': 'نجد الإشارة', 'Shape the story': 'نصوغ القصة', 'Make the thing': 'نبني الفكرة', 'Keep it moving': 'نبقيها متحركة', 'We ask better questions until the real opportunity is visible.': 'نطرح أسئلة أفضل حتى تظهر الفرصة الحقيقية.', 'We turn insight into a clear position, language, and direction.': 'نحوّل الرؤية إلى تموضع ولغة واتجاه واضح.', 'We design and build with enough detail to make it feel inevitable.': 'نصمم ونبني بتفاصيل تجعل النتيجة تبدو حتمية.', 'We launch, learn, and improve until the work earns its place.': 'نطلق ونتعلم ونحسن حتى يثبت العمل قيمته.',
+        'The people behind it': 'الأشخاص وراء العمل', 'Small team.': 'فريق صغير.', 'Full ownership.': 'مسؤولية كاملة.', 'Every project is senior-led and hands-on. The people in the room are the people doing the work.': 'كل مشروع يقوده أصحاب خبرة وبشكل مباشر. الأشخاص في الغرفة هم من ينفذون العمل.', 'Falah Ali Ahmed Hamdan Alzeyoudi': 'فلاح علي أحمد حمدان الزيودي', 'Mohammed Ahmed Khalifa Aldhaheri': 'محمد أحمد خليفة الظاهري', 'Hamdan Salem Abdulla Aldhanhani': 'حمدان سالم عبدالله الدحناني', 'Sulieman Binhyder': 'سليمان بن حيدر', 'CEO · Founder · Software Engineer': 'الرئيس التنفيذي · المؤسس · مهندس برمجيات', 'CFO': 'المدير المالي', 'Social Media Manager': 'مدير وسائل التواصل الاجتماعي', 'Creative Director': 'المدير الإبداعي', 'A few kind words': 'كلمات من عملائنا', 'We leave things': 'نترك الأشياء', 'better than we found them.': 'أفضل مما وجدناها.', 'Have a good problem?': 'لديك تحدٍ يستحق الحل؟', 'Let’s make it': 'لنجعله', 'Tell us what you are building, where it is stuck, and where you want it to go. We’ll come back with a point of view.': 'أخبرنا بما تبنيه وأين توقف وما الوجهة التي تريدها. سنعود إليك برؤية واضحة.', 'Start the conversation': 'ابدأ المحادثة', 'Instagram': 'إنستغرام', 'TikTok': 'تيك توك', 'Back to top ↑': 'العودة إلى الأعلى ↑', 'Direct call': 'اتصال مباشر', 'WhatsApp': 'واتساب', 'Email': 'البريد الإلكتروني', 'UAE': 'الإمارات'
+      };
+      const translateStudio = () => {
+        Object.assign(arabicText, {
+          'FALAH / 02': 'فلاح / 02',
+          'Falah Ali Ahmed Hamdan Alzeyoudi': 'فلاح علي أحمد حمدان الزيودي',
+          'Mohammed Ahmed Khalifa Aldhaheri': 'محمد أحمد خليفة الظاهري',
+          'Hamdan Salem Abdulla Aldhanhani': 'حمدان سالم عبدالله الدحناني',
+          'Sulieman Binhyder': 'سليمان بن حيدر',
+          'Founder-led specialty coffee brand': 'علامة قهوة مختصة يقودها مؤسسها',
+          'Private client': 'عميل خاص',
+          'UAE growth-stage business': 'شركة إماراتية في مرحلة نمو'
+        });
+        const walker = document.createTreeWalker(studioPage, NodeFilter.SHOW_TEXT);
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach((node) => {
+          const source = node.nodeValue.trim();
+          if (!source) return;
+          const translated = arabicText[source];
+          if (translated) node.nodeValue = node.nodeValue.replace(source, translated);
+        });
+      };
+      if (arabicMode) translateStudio();
+
+      const servicesSection = studioPage?.querySelector('#capabilities');
+      const oldOffers = studioPage?.querySelector('#offers');
+      oldOffers?.remove();
+      if (servicesSection) {
+        const arabicServices = [
+          ['تطوير المواقع', 'من AED 500', 'مواقع مخصصة وتطبيقات ويب ومتاجر إلكترونية وصفحات هبوط وأنظمة حجز وطلب وربط واتساب.', 'تصميم مخصص|متاجر وطلبات إلكترونية|أنظمة حجز|ربط واتساب|دعم 30 يوماً', 'المبتدئة:AED 500:موقع تعريفي من 3 صفحات|القياسية:AED 900:تصميم مخصص من 5 صفحات|الاحترافية:AED 1,500:متجر أو نظام طلب متكامل'],
+          ['الهوية التجارية', 'من AED 300', 'تصميم الشعارات وأنظمة الألوان والخطوط وإرشادات العلامة وقوالب التواصل الاجتماعي.', 'تصميم الشعار|نظام الألوان|الخطوط|إرشادات العلامة|قوالب التواصل', 'الأساسية:AED 300:هوية بداية|القياسية:AED 600:هوية متكاملة|الاحترافية:AED 1,200:نظام علامة شامل'],
+          ['صناعة المحتوى', 'من AED 250', 'تصوير المنتجات والفيديو القصير وريلز إنستغرام والتسليم الشهري والتصاميم ذات الهوية.', 'تصوير المنتجات|فيديو قصير|ريلز إنستغرام|تسليم شهري|تصاميم ذات هوية', 'الأساسية:AED 250:حزمة محتوى|النمو:AED 600:محتوى مستمر|الاحترافية:AED 900:إدارة محتوى كاملة'],
+          ['التسويق', 'من AED 400', 'إعلانات مدفوعة على ميتا وجوجل وتيك توك لجذب عملاء جدد باستمرار.', 'إعداد الحملات|استهداف الجمهور|تصميم الإعلانات|تحسين أسبوعي|تقارير الأداء', 'المبتدئة:AED 400:منصة وحملة شهرياً|النمو:AED 700:منصتان وتحسين كامل|الاحترافية:AED 1,200:كل المنصات وأقصى وصول'],
+          ['الأتمتة', 'من AED 300', 'روبوتات محادثة بالذكاء الاصطناعي وسير عمل واتساب وأنظمة طلب ومتابعة العملاء والحجز على مدار الساعة.', 'روبوت محادثة|سير عمل واتساب|أنظمة الطلب|متابعة العملاء|أنظمة الحجز', 'الأساسية:AED 300:أتمتة بسيطة|القياسية:AED 750:سير عمل متكامل|الاحترافية:AED 1,500+:نظام ذكي شامل'],
+          ['النمو الرقمي', 'من AED 350', 'وسائل التواصل الاجتماعي وتحسين محركات البحث والتحليلات ومراجعات الاستراتيجية والتقارير الشهرية.', 'وسائل التواصل|تحسين محركات البحث|التحليلات|مراجعات استراتيجية|تقارير شهرية', 'الأساسية:AED 350:قناة واحدة|النمو:AED 600:قناتان ومحتوى|الاحترافية:AED 900:إدارة كاملة']
+        ];
+        const englishServices = [
+          ['Web Development', 'From AED 500', 'Custom websites, web applications, e-commerce, landing pages, booking systems, ordering systems, and WhatsApp integration.', 'Custom design|E-commerce & ordering|Booking systems|WhatsApp integration|30-day support', 'Starter:AED 500:3-page brochure site|Standard:AED 900:5-page custom design|Pro:AED 1,500:Full e-commerce or ordering build'],
+          ['Branding', 'From AED 300', 'Logo design, color systems, typography, brand guidelines, and social templates that make your business recognizable.', 'Logo design|Color system|Typography|Brand guidelines|Social templates', 'Basic:AED 300:Starter identity|Standard:AED 600:Complete identity|Premium:AED 1,200:Full brand system'],
+          ['Content Creation', 'From AED 250', 'Product photography, short-form video, Instagram reels, monthly delivery, and branded graphics.', 'Product photography|Short-form video|Instagram reels|Monthly delivery|Branded graphics', 'Basic:AED 250:Content starter|Growth:AED 600:Ongoing content|Pro:AED 900:Full content management'],
+          ['Marketing', 'From AED 400', 'Paid advertising on Meta, Google, and TikTok to bring consistent new customers to your business.', 'Campaign setup|Audience targeting|Ad creative|Weekly optimization|Performance reports', 'Starter:AED 400:1 platform · 1 campaign/mo|Growth:AED 700:2 platforms · optimization|Pro:AED 1,200:All platforms · max reach'],
+          ['Automation', 'From AED 300', 'AI chatbots, WhatsApp workflows, ordering systems, lead follow-up, and booking systems that work 24/7.', 'AI chatbot|WhatsApp workflows|Ordering systems|Lead follow-up|Booking systems', 'Basic:AED 300:Simple automation|Standard:AED 750:Complete workflow|Premium:AED 1,500+:Intelligent system'],
+          ['Digital Growth', 'From AED 350', 'Social media, SEO, analytics, strategy reviews, and monthly reporting to keep your audience growing.', 'Social media|SEO|Analytics|Strategy reviews|Monthly reporting', 'Basic:AED 350:1 platform|Growth:AED 600:2 platforms & content|Pro:AED 900:Full management']
+        ];
+        const serviceData = arabicMode ? arabicServices : englishServices;
+        const serviceHeading = arabicMode ? 'ست طرق لتنمية عملك' : 'Six ways we grow a business';
+        const serviceTitle = arabicMode ? 'استوديو واحد.<br>كل جوانب النمو.' : 'One studio.<br>Every growth layer.';
+        const serviceIntro = arabicMode ? 'اختر التحدي. نقدم المزيج المناسب من الاستراتيجية والتصميم والتقنية والنمو لحله.' : 'Choose the pressure point. We bring the right mix of strategy, design, technology, and growth to solve it.';
+        const pricingTitle = arabicMode ? 'باقات الأسعار' : 'Pricing tiers';
+        servicesSection.innerHTML = `<div class="section-inner"><div class="s-head reveal"><div><div class="s-kicker">${serviceHeading}</div><h2>${serviceTitle}</h2></div><p>${serviceIntro}</p></div><div class="service-selector"><div class="service-tabs">${serviceData.map((service,index) => `<button class="service-tab${index === 0 ? ' active' : ''}" type="button" data-service-index="${index}"><span class="service-tab-index">0${index + 1}</span><span class="service-tab-title">${service[0]}</span><span class="service-tab-price">${service[1]}</span></button>`).join('')}</div><div class="service-detail" id="serviceDetail"></div></div></div>`;
+        const detail = servicesSection.querySelector('#serviceDetail');
+        const renderService = (index) => { const service = serviceData[index]; detail.innerHTML = `<div class="service-detail-kicker">${service[1]}</div><h3>${service[0]}</h3><p class="service-detail-description">${service[2]}</p><div class="service-included">${service[3].split('|').map(item => `<span>${item}</span>`).join('')}</div><div class="service-pricing-title">${pricingTitle}</div><div class="service-price-grid">${service[4].split('|').map((tier,itemIndex) => { const parts = tier.split(':'); return `<div class="service-price-card${itemIndex === 1 ? ' featured' : ''}"><small>${parts[0]}${itemIndex === 1 ? ' ★' : ''}</small><strong>${parts[1]}</strong><span>${parts[2]}</span></div>`; }).join('')}</div>`; };
+        renderService(0);
+        servicesSection.querySelectorAll('.service-tab').forEach(tab => tab.addEventListener('click', () => { servicesSection.querySelector('.service-tab.active')?.classList.remove('active'); tab.classList.add('active'); renderService(Number(tab.dataset.serviceIndex)); }));
+      }
+
+      const contactSection = studioPage?.querySelector('#contact .contact-box');
+      if (contactSection) {
+        Object.assign(arabicText, {
+          "Have a good problem?": "لديك تحدٍ يستحق الحل؟", "Let's build": "لنبنِ", "something": "شيئاً", "great.": "رائعاً.", "Tell us what your business needs. We’ll help you build, brand, automate, or grow it.": "أخبرنا بما يحتاجه عملك. سنساعدك على البناء وصناعة الهوية والأتمتة والنمو.", "Your name *": "اسمك *", "Business name": "اسم العمل", "Email address *": "البريد الإلكتروني *", "Phone / WhatsApp": "الهاتف / واتساب", "Service needed *": "الخدمة المطلوبة *", "Choose a service": "اختر خدمة", "Estimated budget": "الميزانية التقديرية", "Choose a range": "اختر نطاقاً", "Preferred launch timeline": "الجدول الزمني المفضل للإطلاق", "Choose a timeline": "اختر جدولاً زمنياً", "As soon as possible": "في أقرب وقت ممكن", "Within 30 days": "خلال 30 يوماً", "1 - 3 months": "من شهر إلى 3 أشهر", "Just exploring": "ما زلت أستكشف", "Tell us about your project *": "أخبرنا عن مشروعك *", "Send message ↗": "أرسل الرسالة ↗", "We reply by email — usually within 24 hours.": "نرد عبر البريد الإلكتروني — عادةً خلال 24 ساعة.", "Chat with Falah Studios": "تحدث مع فلاح ستوديوز", "Direct call": "اتصال مباشر"
+        });
+        contactSection.innerHTML = `
+          <div class="contact-reference">
+            <div class="contact-reference-intro">
+              <div class="s-kicker">Have a good problem?</div>
+              <h2>Let's build<br>something <span>great.</span></h2>
+              <p class="contact-reference-copy">Tell us what your business needs. We’ll help you build, brand, automate, or grow it.</p>
+              <div class="contact-reference-links">
+                <a class="contact-reference-link magnetic" href="mailto:contact.falahstudios@gmail.com" data-cursor="Email"><span class="contact-reference-icon">✉</span><span><small>Email</small>contact.falahstudios@gmail.com</span></a>
+                <a class="contact-reference-link magnetic" href="tel:+971507750133" data-cursor="Call"><span class="contact-reference-icon">☎</span><span><small>Direct call</small>+971 050 775 0133</span></a>
+                <a class="contact-reference-link magnetic" href="https://wa.me/971507750133" target="_blank" rel="noreferrer" data-cursor="WhatsApp"><span class="contact-reference-icon">◉</span><span><small>WhatsApp</small>Chat with Falah Studios</span></a>
+              </div>
+            </div>
+            <form class="reference-form" action="mailto:contact.falahstudios@gmail.com" method="post" enctype="text/plain">
+              <div class="reference-field"><label for="studio-name">Your name *</label><input id="studio-name" name="name" required autocomplete="name" /></div>
+              <div class="reference-field"><label for="studio-business">Business name</label><input id="studio-business" name="business" autocomplete="organization" /></div>
+              <div class="reference-field"><label for="studio-email">Email address *</label><input id="studio-email" type="email" name="email" required autocomplete="email" /></div>
+              <div class="reference-field"><label for="studio-phone">Phone / WhatsApp</label><input id="studio-phone" name="phone" autocomplete="tel" /></div>
+              <div class="reference-field"><label for="studio-service">Service needed *</label><select id="studio-service" name="service" required><option value="">Choose a service</option><option>Web Development</option><option>Branding</option><option>Content Creation</option><option>Marketing</option><option>Automation</option><option>Digital Growth</option></select></div>
+              <div class="reference-field"><label for="studio-budget">Estimated budget</label><select id="studio-budget" name="budget"><option value="">Choose a range</option><option>AED 250 - 500</option><option>AED 500 - 1,500</option><option>AED 1,500 - 5,000</option><option>AED 5,000+</option></select></div>
+              <div class="reference-field full"><label for="studio-timeline">Preferred launch timeline</label><select id="studio-timeline" name="timeline"><option value="">Choose a timeline</option><option>As soon as possible</option><option>Within 30 days</option><option>1 - 3 months</option><option>Just exploring</option></select></div>
+              <div class="reference-field full"><label for="studio-message">Tell us about your project *</label><textarea id="studio-message" name="message" required></textarea></div>
+              <div class="reference-submit full"><button class="s-btn primary magnetic" type="submit" data-cursor="Send">Send message ↗</button><span>We reply by email — usually within 24 hours.</span></div>
+            </form>
+          </div>`;
+        if (arabicMode) translateStudio();
+      }
+
+      const contactSide = studioPage?.querySelector('.contact-side');
+      if (contactSide) {
+        const methods = document.createElement('div');
+        methods.className = 'contact-methods';
+        methods.innerHTML = '<a class="contact-method" href="tel:+971507750133">☎ اتصال مباشر</a><a class="contact-method" href="https://wa.me/971507750133" target="_blank" rel="noreferrer">◉ واتساب</a>';
+        contactSide.insertBefore(methods, contactSide.querySelector('.email'));
+      }
+
+      const navInner = studioPage?.querySelector('.nav-inner');
+      if (navInner) {
+        const toggle = document.createElement('button');
+        toggle.className = 'lang-toggle';
+        toggle.type = 'button';
+        toggle.innerHTML = arabicMode ? '<span>EN</span><span>/</span><strong>AR</strong>' : '<strong>EN</strong><span>/</span><span>AR</span>';
+        toggle.setAttribute('aria-label', 'Switch between English and Arabic');
+        navInner.insertBefore(toggle, navInner.querySelector('.s-cta'));
+        let arabic = arabicMode;
+        const translations = {
+          'Studio': 'الاستوديو',
+          'Capabilities': 'الخدمات',
+          'Work': 'الأعمال',
+          'Team': 'الفريق',
+          'Start a project': 'ابدأ مشروعاً',
+          'UAE creative technology studio': 'استوديو تقني إبداعي في الإمارات',
+          'Build with us ↗': 'ابنِ معنا ↗',
+          'Explore the work': 'استكشف أعمالنا',
+          'The people behind it': 'الفريق وراء العمل',
+          'Six ways we grow a business': 'ست طرق لتنمية عملك',
+          'Selected work': 'أعمال مختارة',
+          'How we work': 'كيف نعمل',
+        };
+        const translatable = Array.from(studioPage.querySelectorAll('a, h2, .s-eyebrow, .s-kicker'));
+        toggle.addEventListener('click', () => {
+          window.location.search = arabic ? '?lang=en' : '';
+        });
+      }
+
+      window.addEventListener('load', () => setTimeout(() => intro.classList.add('done'), 900));
+      window.addEventListener('scroll', () => studioNav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.studio-page .reveal').forEach((item, index) => {
+        item.style.transitionDelay = `${Math.min(index % 4, 3) * 70}ms`;
+        revealObserver.observe(item);
+      });
+
+      const dot = document.getElementById('studioDot');
+      const ring = document.getElementById('studioRing');
+      const cursorLabel = document.getElementById('studioCursorLabel');
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        document.body.classList.add('cursor-mode');
+        let mouseX = -100, mouseY = -100, ringX = -100, ringY = -100;
+        window.addEventListener('mousemove', (event) => {
+          mouseX = event.clientX;
+          mouseY = event.clientY;
+          dot.style.left = `${mouseX}px`;
+          dot.style.top = `${mouseY}px`;
+          cursorLabel.style.left = `${mouseX}px`;
+          cursorLabel.style.top = `${mouseY}px`;
+        });
+        const follow = () => {
+          ringX += (mouseX - ringX) * 0.14;
+          ringY += (mouseY - ringY) * 0.14;
+          ring.style.left = `${ringX}px`;
+          ring.style.top = `${ringY}px`;
+          requestAnimationFrame(follow);
+        };
+        follow();
+        document.querySelectorAll('.studio-page .magnetic').forEach((element) => {
+          element.addEventListener('mouseenter', () => {
+            document.body.classList.add('cursor-hover');
+            cursorLabel.textContent = element.dataset.cursor || 'Open';
+          });
+          element.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+      }
+    </script>
+  </body>
+</html>

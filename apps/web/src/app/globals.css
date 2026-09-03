@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --amb: #e8a020;
+  --amb-light: #f5b942;
+  --amb-dark: #b87a10;
+  --bg: #080808;
+  --ch: #0f0f0f;
+  --tx: #f2ede6;
+  --tx-muted: rgba(242, 237, 230, 0.55);
+}
+
+* {
+  @apply scroll-smooth;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  @apply bg-slate-950 text-slate-50 font-sans overflow-x-hidden;
+  background: var(--bg);
+  color: var(--tx);
+}
+
+::selection {
+  @apply bg-amber-500 text-black;
+  background: var(--amb);
+  color: var(--bg);
+}
+
+a {
+  @apply transition-colors duration-300;
+}
+
+button {
+  @apply transition-all duration-300;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ch);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--amb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--amb-light);
+}
+
+/* Smooth page transitions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(217, 119, 6, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(217, 119, 6, 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600;
+}
+
+/* Glass effect */
+.glass {
+  @apply backdrop-blur-xl bg-white/10 border border-white/20;
+}
+
+/* Smooth scrollbar styling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Link hover effects */
+a {
+  position: relative;
+}
+
+/* Page animations */
+main {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Section spacing */
+section {
+  position: relative;
+}
+
+/* Enhanced focus states */
+:focus-visible {
+  outline: 2px solid var(--amb);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Utility classes */
+.text-glow {
+  text-shadow: 0 0 10px rgba(217, 119, 6, 0.5);
+}
+
+.border-glow {
+  border-color: rgba(217, 119, 6, 0.3);
+}
+
+/* Responsive typography */
+@screen md {
+  html {
+    font-size: 17px;
+  }
+}
+
+@screen lg {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* Animation delays */
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}

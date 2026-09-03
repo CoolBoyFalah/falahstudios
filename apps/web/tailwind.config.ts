@@ -1,0 +1,22 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        amber: {
+          400: "#f5b942",
+          500: "#e8a020",
+          600: "#b87a10",
+        },
+      },
+    },
+  },
+  plugins: [],
+};
+export default config;

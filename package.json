@@ -1,0 +1,27 @@
+{
+  "name": "falah-studios",
+  "version": "1.0.0",
+  "description": "Falah Studios - Creative Technology Studio - Full Stack Application",
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "workspaces": [
+    "apps/web",
+    "apps/api"
+  ],
+  "scripts": {
+    "dev": "concurrently \"yarn workspace @falah/web dev\" \"yarn workspace @falah/api dev\"",
+    "build": "yarn workspace @falah/web build && yarn workspace @falah/api build",
+    "start": "yarn workspace @falah/api start",
+    "web:dev": "yarn workspace @falah/web dev",
+    "web:build": "yarn workspace @falah/web build",
+    "api:dev": "yarn workspace @falah/api dev",
+    "api:build": "yarn workspace @falah/api build",
+    "lint": "yarn workspace @falah/web lint && yarn workspace @falah/api lint",
+    "type-check": "yarn workspace @falah/web type-check && yarn workspace @falah/api type-check"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
