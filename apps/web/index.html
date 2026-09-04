@@ -7,7 +7,7 @@
 <meta name="description" content="Falah Studios designs and builds complete digital systems for ambitious businesses: brand, website, content, AI, automation, and growth.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#080808;--ink:#f4f0ea;--muted:#8e8a84;--line:rgba(244,240,234,.13);--soft:rgba(244,240,234,.045);--gold:#f1a817;--gold2:#ffd578;--max:1240px;--ease:cubic-bezier(.16,1,.3,1)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Space Grotesk",sans-serif;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit;color:inherit}button{border:0;background:none;cursor:pointer}.mono,.eyebrow,.tag,.nav a,.section-label{font-family:"DM Mono",monospace}.eyebrow,.section-label,.tag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
@@ -51,17 +51,523 @@ section{padding:120px 0}.dark{background:#0d0d0d;border-block:1px solid var(--li
 <section id="contact"><div class="wrap"><div class="contact-box reveal"><div class="contact-grid"><div><div class="section-label">Ready to build your system?</div><h2>Tell us what you are trying to <span>accomplish.</span></h2><p class="contact-copy">We’ll show you what’s possible, what to build first, and where the biggest opportunity is hiding.</p><div class="contact-links"><a href="mailto:contact.falahstudios@gmail.com">contact.falahstudios@gmail.com ↗</a><a href="tel:+971507750133">+971 050 775 0133 · Direct call</a><a href="https://wa.me/971507750133" target="_blank" rel="noreferrer">WhatsApp · Start a chat ↗</a></div></div><form class="contact-side" action="mailto:contact.falahstudios@gmail.com" method="post" enctype="text/plain"><input name="name" placeholder="Your name *" required><input name="business" placeholder="Business name"><input name="email" type="email" placeholder="Email address *" required><textarea name="message" placeholder="What are you trying to accomplish?" required></textarea><button class="button" type="submit">Start the conversation ↗</button></form></div></div></div></section>
 </main><footer class="footer"><div class="wrap footer-inner"><span>© 2026 Falah Studios · Abu Dhabi, UAE</span><div class="footer-links"><a href="https://instagram.com/falahstudios" target="_blank" rel="noreferrer">Instagram</a><a href="https://tiktok.com/@falahstudios" target="_blank" rel="noreferrer">TikTok</a><a href="#top">Back to top ↑</a></div></div></footer>
 <script>
-const systems=[['01','IDEA','Strategy before execution. Define the vision, audience, goals, competitors, and digital roadmap.',['Discovery call','Competitor research','Goal mapping','Digital roadmap']],['02','BRAND','An identity built to last. Make people trust the business before they speak to it.',['Logo design','Color system','Typography','Brand guidelines']],['03','WEBSITE','Your 24/7 sales machine. Fast, custom, responsive, and built around your customers.',['Custom design','Mobile responsive','WhatsApp integration','30-day support']],['04','CONTENT','Content that actually converts. Stay visible, active, consistent, and recognizably you.',['Product photography','Short-form video','Instagram reels','Branded graphics']],['05','AUTOMATION','Your business works while you sleep. Remove repetitive tasks and follow up without friction.',['AI chatbot','WhatsApp workflows','Ordering systems','Lead follow-up']],['06','AI','Intelligence that helps the team. Assist customers, answer questions, and make better decisions.',['AI assistants','Smart responses','Customer support','Business intelligence']],['07','GROWTH','Scale what is working. Paid ads, social, SEO, analytics, and monthly reviews.',['Paid ads','Social media','SEO','Analytics']]];
-const industries=[['Cafes & restaurants','Digital menu + online ordering + WhatsApp + loyalty + social content'],['Retail','E-commerce + product storytelling + payments + CRM + growth'],['Events','Booking + ticketing + registration + WhatsApp + social content'],['Real estate','Property listings + lead capture + WhatsApp + CRM automation'],['Fitness','Memberships + bookings + payments + content + retention'],['Hospitality','Website + reservations + guest journeys + automation'],['Professional services','Authority brand + lead capture + booking + follow-up'],['Startups & creators','Positioning + launch site + content engine + growth']];
-const list=document.querySelector('#systemList'), detail=document.querySelector('#systemDetail');
-function showSystem(i){const s=systems[i];list.querySelector('.active')?.classList.remove('active');list.children[i].classList.add('active');detail.innerHTML=`<div class="detail-number">${s[0]} / ${s[1]}</div><h3>${s[1]}</h3><p>${s[2]}</p><div class="chips">${s[3].map(x=>`<span>${x}</span>`).join('')}</div><span class="detail-arrow">Layer ${s[0]} of 07 · See what we can build ↗</span>`}
-systems.forEach((s,i)=>{const b=document.createElement('button');b.className='system-item';b.innerHTML=`<span class="number">${s[0]}</span><strong>${s[1]}</strong><span>${i===0?'Start here':'Layer'}</span>`;b.onclick=()=>showSystem(i);list.appendChild(b)});showSystem(0);
-const tabs=document.querySelector('#industryTabs'), indDetail=document.querySelector('#industryDetail');function showIndustry(i){tabs.querySelector('.active')?.classList.remove('active');tabs.children[i].classList.add('active');const x=industries[i];indDetail.innerHTML=`<div class="eyebrow">Industry system</div><h3>${x[0]}</h3><p>One connected digital experience designed around the way your customers discover, trust, book, buy, and return.</p><div class="industry-stack">${x[1].split(' + ').map(y=>`<span>${y}</span>`).join('')}</div>`}industries.forEach((x,i)=>{const b=document.createElement('button');b.textContent=x[0];b.onclick=()=>showIndustry(i);tabs.appendChild(b)});showIndustry(0);
-const nav=document.querySelector('#nav');addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>35),{passive:true});const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(e=>observer.observe(e));
-const lang=document.querySelector('#lang');let english=new URLSearchParams(location.search).get('lang')!=='ar';
-const arabicText={'The system':'النظام','Solutions':'الحلول','What we build':'ما نبنيه','Work':'الأعمال','About':'من نحن','Start a project':'ابدأ مشروعاً','UAE creative technology studio · V2.0':'استوديو تقني إبداعي في الإمارات · الإصدار 2.0','We don\'t just build websites.':'نحن لا نبني المواقع فقط.','We build digital businesses.':'نبني الأعمال الرقمية.','Falah connects brand, web, content, AI, automation, and growth into one complete digital system built around how your business actually works.':'يربط فلاح بين العلامة والموقع والمحتوى والذكاء الاصطناعي والأتمتة والنمو في نظام رقمي متكامل مصمم حول طريقة عملك.','Start a project ↗':'ابدأ مشروعاً ↗','Explore our work':'استكشف أعمالنا','Demo-first by design.':'نبدأ بالعرض التجريبي.','See a working direction before you commit to anything.':'شاهد تصوراً عملياً قبل أن تلتزم بأي شيء.','Falah digital ecosystem':'منظومة فلاح الرقمية','Live concept':'تصور حي','Make the':'اجعل','whole thing':'كل شيء','work.':'يعمل.','Brand · Web · AI · Growth':'العلامة · الموقع · الذكاء الاصطناعي · النمو','Abu Dhabi / UAE':'أبوظبي / الإمارات','One connected system →':'نظام واحد متصل ←','Brand systems':'أنظمة العلامات','Digital experiences':'تجارب رقمية','AI & automation':'الذكاء الاصطناعي والأتمتة','Growth infrastructure':'بنية النمو','The studio':'الاستوديو','Why this exists':'لماذا يوجد هذا الاستوديو','Your business is already a system. We make it work better.':'عملك هو نظام متكامل بالفعل. نحن نجعله يعمل بشكل أفضل.','Customers discover you through content, trust you through your brand, buy through your website, and return because the whole experience feels effortless. We design those connections instead of handing you six disconnected services.':'يكتشفك العملاء من خلال المحتوى، ويثقون بك عبر علامتك، ويشترون من موقعك، ويعودون لأن التجربة بأكملها سهلة. نحن نصمم هذه الروابط بدلاً من تقديم ست خدمات منفصلة.','Built around the business':'مصمم حول العمل','We start with how you operate, not a template.':'نبدأ من طريقة عملك، لا من قالب جاهز.','Creative with purpose':'إبداع بهدف','Every visual decision should improve trust, clarity, or conversion.':'كل قرار بصري يجب أن يحسن الثقة أو الوضوح أو التحويل.','Support after launch':'دعم بعد الإطلاق','We stay close enough to help the system keep growing.':'نبقى قريبين بما يكفي لمساعدة النظام على الاستمرار في النمو.','The Falah system':'نظام فلاح','From first idea to full momentum.':'من أول فكرة إلى زخم كامل.','Seven connected layers. One team. A digital presence that gets stronger at every stage.':'سبع طبقات متصلة. فريق واحد. حضور رقمي يزداد قوة في كل مرحلة.','IDEA':'فكرة','BRAND':'علامة','WEBSITE':'موقع','CONTENT':'محتوى','AUTOMATION':'أتمتة','AI':'ذكاء اصطناعي','GROWTH':'نمو','Solutions':'الحلول','Choose the level of system you need.':'اختر مستوى النظام الذي تحتاجه.','Not rigid packages. Clear ways to understand what we can build for your stage of growth.':'ليست باقات جامدة، بل طرق واضحة لفهم ما يمكننا بناؤه لمرحلة نموك.','START':'ابدأ','GROW':'انمُ','AUTOMATE':'أتمت','SCALE':'وسّع','Built for':'مصمم لـ','Different businesses. Right digital system.':'أعمال مختلفة. نظام رقمي مناسب.','What we build':'ما نبنيه','Every layer your business needs.':'كل طبقة يحتاجها عملك.','Falah digital ecosystem':'منظومة فلاح الرقمية','What connected growth looks like.':'هكذا يبدو النمو المتصل.','Why Falah':'لماذا فلاح','One connected team beats six hand-offs.':'فريق واحد متصل أفضل من ستة أطراف.','Case studies':'دراسات الحالة','Projects that do something.':'مشاريع تحقق نتائج.','The way we work':'طريقتنا في العمل','Discover. Design. Build. Launch. Grow.':'اكتشف. صمم. ابنِ. أطلق. نمِ.','Engagements':'طرق التعاون','Start where you are. Build from there.':'ابدأ من مكانك. وابنِ من هناك.','Ready to build your system?':'مستعد لبناء نظامك؟','Tell us what you are trying to accomplish.':'أخبرنا بما تحاول تحقيقه.','The team':'الفريق','The people building the system.':'الأشخاص الذين يبنون النظام.','Falah Studios is built around hands-on ownership. Strategy, finance, social, creative, and engineering stay close to the work.':'فلاح ستوديوز مبني على المسؤولية المباشرة. تبقى الاستراتيجية والمالية والتواصل الاجتماعي والإبداع والهندسة قريبة من العمل.','Falah Ali Ahmed Hamdan Alzeyoudi':'فلاح علي أحمد حمدان الزيودي','Mohammed Ahmed Khalifa Aldhaheri':'محمد أحمد خليفة الظاهري','Hamdan Salem Abdulla Aldhanhani':'حمدان سالم عبدالله الدحناني','Sulieman Binhyder':'سليمان بن حيدر','CEO · Founder · Software Engineer':'الرئيس التنفيذي · المؤسس · مهندس برمجيات','CFO · Software Engineer · Web Developer':'المدير المالي · مهندس برمجيات · مطور مواقع','Social Media Manager · Brand Designer':'مدير وسائل التواصل الاجتماعي · مصمم علامات','Creative Director':'المدير الإبداعي','Email':'البريد الإلكتروني','Direct call':'اتصال مباشر','WhatsApp':'واتساب','Chat with Falah Studios':'تحدث مع فلاح ستوديوز','Your name *':'اسمك *','Business name':'اسم العمل','Email address *':'البريد الإلكتروني *','Phone / WhatsApp':'الهاتف / واتساب','What are you trying to accomplish?':'ما الذي تحاول تحقيقه؟','Start the conversation ↗':'ابدأ المحادثة ↗','We’ll show you what’s possible, what to build first, and where the biggest opportunity is hiding.':'سنوضح لك ما هو ممكن، وما الذي يجب بناؤه أولاً، وأين تكمن أكبر فرصة.'};
-function setLanguage(isEnglish){document.documentElement.lang=isEnglish?'en':'ar';document.body.dir=isEnglish?'ltr':'rtl';lang.innerHTML=isEnglish?'<b>EN</b> / AR':'EN / <b>AR</b>';document.querySelectorAll('[data-i18n]').forEach(el=>{const source=el.dataset.source||el.textContent.trim();el.dataset.source=source;el.textContent=isEnglish?source:(arabicText[source]||source)});}
-document.querySelectorAll('a,button,h1,h2,h3,h4,p,span,small,strong,div').forEach(el=>{const text=el.textContent.trim();if(text&&arabicText[text]){el.dataset.i18n='true';el.dataset.source=text}});setLanguage(english);lang.onclick=()=>{location.search=english?'?lang=ar':''};
-if(matchMedia('(pointer:fine)').matches){const dot=document.createElement('i'),ring=document.createElement('i');Object.assign(dot.style,{position:'fixed',width:'5px',height:'5px',borderRadius:'50%',background:'var(--gold)',pointerEvents:'none',zIndex:99});Object.assign(ring.style,{position:'fixed',width:'30px',height:'30px',border:'1px solid var(--gold)',borderRadius:'50%',pointerEvents:'none',zIndex:98,transition:'transform .1s ease, width .2s ease,height .2s ease'});document.body.append(dot,ring);let x=-50,y=-50,rx=x,ry=y;addEventListener('mousemove',e=>{x=e.clientX;y=e.clientY;dot.style.transform=`translate(${x-2}px,${y-2}px)`});function follow(){rx+=(x-rx)*.3;ry+=(y-ry)*.3;ring.style.transform=`translate(${rx-15}px,${ry-15}px)`;requestAnimationFrame(follow)}follow();document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{ring.style.width='52px';ring.style.height='52px'});el.addEventListener('mouseleave',()=>{ring.style.width='30px';ring.style.height='30px'})})}
+const systems=[
+['01','IDEA','Strategy before execution. Define the vision, audience, goals, competitors, and digital roadmap.',
+['Discovery call','Competitor research','Goal mapping','Digital roadmap']],
+['02','BRAND','An identity built to last. Make people trust the business before they speak to it.',
+['Logo design','Color system','Typography','Brand guidelines']],
+['03','WEBSITE','Your 24/7 sales machine. Fast, custom, responsive, and built around your customers.',
+['Custom design','Mobile responsive','WhatsApp integration','30-day support']],
+['04','CONTENT','Content that actually converts. Stay visible, active, consistent, and recognizably you.',
+['Product photography','Short-form video','Instagram reels','Branded graphics']],
+['05','AUTOMATION','Your business works while you sleep. Remove repetitive tasks and follow up without friction.',
+['AI chatbot','WhatsApp workflows','Ordering systems','Lead follow-up']],
+['06','AI','Intelligence that helps the team. Assist customers, answer questions, and make better decisions.',
+['AI assistants','Smart responses','Customer support','Business intelligence']],
+['07','GROWTH','Scale what is working. Paid ads, social, SEO, analytics, and monthly reviews.',
+['Paid ads','Social media','SEO','Analytics']]
+];
+
+const systemsAR=[
+['فكرة','استراتيجية قبل التنفيذ. نحدد الرؤية والجمهور والأهداف والمنافسين وخارطة الطريق الرقمية.',
+['جلسة اكتشاف','بحث المنافسين','تحديد الأهداف','خارطة الطريق الرقمية']],
+['العلامة','هوية مصممة لتدوم. نجعل الناس يثقون بالعمل قبل أن يتواصلوا معه.',
+['تصميم الشعار','نظام الألوان','الخطوط','إرشادات العلامة']],
+['الموقع','آلة مبيعات تعمل على مدار الساعة. سريع ومخصص ومتجاوب ومبني حول عملائك.',
+['تصميم مخصص','متجاوب مع الهاتف','تكامل واتساب','دعم لمدة 30 يوماً']],
+['المحتوى','محتوى يحقق نتائج فعلية. ابقَ حاضراً ونشطاً ومتناسقاً وسهل التعرّف عليه.',
+['تصوير المنتجات','فيديو قصير','ريلز إنستغرام','تصاميم للعلامة']],
+['الأتمتة','عملك يستمر حتى عندما تكون بعيداً. نزيل المهام المتكررة ونتابع العملاء دون تعقيد.',
+['روبوت محادثة بالذكاء الاصطناعي','مسارات واتساب','أنظمة الطلبات','متابعة العملاء المحتملين']],
+['الذكاء الاصطناعي','ذكاء يساعد فريقك. نساعد العملاء ونجيب عن الأسئلة وندعم اتخاذ قرارات أفضل.',
+['مساعدو الذكاء الاصطناعي','ردود ذكية','دعم العملاء','ذكاء الأعمال']],
+['النمو','وسّع ما ينجح. إعلانات مدفوعة، وسائل التواصل، تحسين محركات البحث، التحليلات والمراجعات الشهرية.',
+['الإعلانات المدفوعة','وسائل التواصل الاجتماعي','تحسين محركات البحث','التحليلات']]
+];
+
+const industries=[
+['Cafes & restaurants','Digital menu + online ordering + WhatsApp + loyalty + social content'],
+['Retail','E-commerce + product storytelling + payments + CRM + growth'],
+['Events','Booking + ticketing + registration + WhatsApp + social content'],
+['Real estate','Property listings + lead capture + WhatsApp + CRM automation'],
+['Fitness','Memberships + bookings + payments + content + retention'],
+['Hospitality','Website + reservations + guest journeys + automation'],
+['Professional services','Authority brand + lead capture + booking + follow-up'],
+['Startups & creators','Positioning + launch site + content engine + growth']
+];
+
+const industriesAR=[
+['المقاهي والمطاعم','قائمة رقمية + طلبات إلكترونية + واتساب + ولاء العملاء + محتوى اجتماعي'],
+['التجزئة','تجارة إلكترونية + سرد المنتجات + المدفوعات + إدارة العملاء + النمو'],
+['الفعاليات','حجوزات + تذاكر + تسجيل + واتساب + محتوى اجتماعي'],
+['العقارات','قوائم العقارات + جمع العملاء المحتملين + واتساب + أتمتة إدارة العملاء'],
+['اللياقة','عضويات + حجوزات + مدفوعات + محتوى + الحفاظ على العملاء'],
+['الضيافة','موقع إلكتروني + حجوزات + رحلة الضيف + أتمتة'],
+['الخدمات المهنية','علامة موثوقة + جمع العملاء المحتملين + حجز + متابعة'],
+['الشركات الناشئة والمبدعون','تموضع + موقع إطلاق + محرك محتوى + نمو']
+];
+
+const ar={
+'The system':'النظام',
+'Solutions':'الحلول',
+'What we build':'ما نبنيه',
+'Work':'الأعمال',
+'About':'من نحن',
+'Start a project':'ابدأ مشروعاً',
+
+'UAE creative technology studio · V2.0':'استوديو تقني إبداعي في الإمارات · الإصدار 2.0',
+"We don't just build websites.":'نحن لا نبني المواقع فقط.',
+'We build digital businesses.':'نبني الأعمال الرقمية.',
+'Falah connects brand, web, content, AI, automation, and growth into one complete digital system built around how your business actually works.':'يربط فلاح بين العلامة والموقع والمحتوى والذكاء الاصطناعي والأتمتة والنمو في نظام رقمي متكامل مصمم حول طريقة عملك.',
+'Start a project ↗':'ابدأ مشروعاً ↗',
+'Explore our work':'استكشف أعمالنا',
+'Demo-first by design.':'نبدأ بالعرض التجريبي.',
+'See a working direction before you commit to anything.':'شاهد تصوراً عملياً قبل أن تلتزم بأي شيء.',
+'Falah digital ecosystem':'منظومة فلاح الرقمية',
+'Live concept':'تصور حي',
+'Make the':'اجعل',
+'whole thing':'كل شيء',
+'work.':'يعمل.',
+'Brand · Web · AI · Growth':'العلامة · الموقع · الذكاء الاصطناعي · النمو',
+'Abu Dhabi / UAE':'أبوظبي / الإمارات',
+'One connected system →':'نظام واحد متصل ←',
+
+'Brand systems':'أنظمة العلامات',
+'Digital experiences':'تجارب رقمية',
+'AI & automation':'الذكاء الاصطناعي والأتمتة',
+'Growth infrastructure':'بنية النمو',
+
+'The studio':'الاستوديو',
+'Why this exists':'لماذا يوجد هذا الاستوديو',
+'Falah Studios is a UAE creative technology studio built for businesses that want more than a website. We combine commercial thinking, serious engineering, and creative direction under one roof.':'فلاح ستوديوز هو استوديو تقني إبداعي في الإمارات مصمم للشركات التي تريد أكثر من مجرد موقع إلكتروني. نجمع بين التفكير التجاري والهندسة المتقدمة والتوجيه الإبداعي تحت سقف واحد.',
+'Your business is already a system. We make it work better.':'عملك هو نظام متكامل بالفعل. نحن نجعله يعمل بشكل أفضل.',
+'Customers discover you through content, trust you through your brand, buy through your website, and return because the whole experience feels effortless. We design those connections instead of handing you six disconnected services.':'يكتشفك العملاء من خلال المحتوى، ويثقون بك عبر علامتك، ويشترون من موقعك، ويعودون لأن التجربة بأكملها سهلة. نحن نصمم هذه الروابط بدلاً من تقديم ست خدمات منفصلة.',
+'Built around the business':'مصمم حول العمل',
+'We start with how you operate, not a template.':'نبدأ من طريقة عملك، لا من قالب جاهز.',
+'Creative with purpose':'إبداع بهدف',
+'Every visual decision should improve trust, clarity, or conversion.':'كل قرار بصري يجب أن يحسن الثقة أو الوضوح أو التحويل.',
+'Support after launch':'دعم بعد الإطلاق',
+'We stay close enough to help the system keep growing.':'نبقى قريبين بما يكفي لمساعدة النظام على الاستمرار في النمو.',
+
+'The Falah system':'نظام فلاح',
+'From first idea':'من أول فكرة',
+'to full momentum.':'إلى زخم كامل.',
+'From first idea to full momentum.':'من أول فكرة إلى زخم كامل.',
+'Seven connected layers. One team. A digital presence that gets stronger at every stage.':'سبع طبقات متصلة. فريق واحد. حضور رقمي يزداد قوة في كل مرحلة.',
+'Layer':'طبقة',
+'Start here':'ابدأ هنا',
+'Layer 01 of 07 · See what we can build ↗':'الطبقة 01 من 07 · شاهد ما يمكننا بناؤه ↗',
+'Layer 02 of 07 · See what we can build ↗':'الطبقة 02 من 07 · شاهد ما يمكننا بناؤه ↗',
+'Layer 03 of 07 · See what we can build ↗':'الطبقة 03 من 07 · شاهد ما يمكننا بناؤه ↗',
+'Layer 04 of 07 · See what we can build ↗':'الطبقة 04 من 07 · شاهد ما يمكننا بناؤه ↗',
+'Layer 05 of 07 · See what we can build ↗':'الطبقة 05 من 07 · شاهد ما يمكننا بناؤه ↗',
+'Layer 06 of 07 · See what we can build ↗':'الطبقة 06 من 07 · شاهد ما يمكننا بناؤه ↗',
+'Layer 07 of 07 · See what we can build ↗':'الطبقة 07 من 07 · شاهد ما يمكننا بناؤه ↗',
+
+'IDEA':'فكرة',
+'BRAND':'علامة',
+'WEBSITE':'موقع',
+'CONTENT':'محتوى',
+'AUTOMATION':'أتمتة',
+'AI':'ذكاء اصطناعي',
+'GROWTH':'نمو',
+
+'Solutions':'الحلول',
+'Choose the level':'اختر مستوى',
+'of system you need.':'النظام الذي تحتاجه.',
+'Choose the level of system you need.':'اختر مستوى النظام الذي تحتاجه.',
+'Not rigid packages. Clear ways to understand what we can build for your stage of growth.':'ليست باقات جامدة، بل طرق واضحة لفهم ما يمكننا بناؤه لمرحلة نموك.',
+'START':'ابدأ',
+'GROW':'انمُ',
+'AUTOMATE':'أتمت',
+'SCALE':'وسّع',
+'02 / Grow':'02 / نمو',
+'03 / Automate':'03 / أتمتة',
+'04 / Scale':'04 / توسّع',
+'Get the essentials right: brand identity, website, Google presence, and a social foundation.':'احصل على الأساسيات بالشكل الصحيح: هوية العلامة، الموقع، الحضور على Google، وأساس قوي لوسائل التواصل.',
+'Turn attention into a repeatable engine with content, SEO, social, analytics, and marketing.':'حوّل الاهتمام إلى محرك نمو متكرر من خلال المحتوى وتحسين محركات البحث ووسائل التواصل والتحليلات والتسويق.',
+'Remove operational drag with AI assistants, WhatsApp workflows, bookings, and lead follow-up.':'قلل التعقيد التشغيلي باستخدام مساعدي الذكاء الاصطناعي ومسارات واتساب والحجوزات ومتابعة العملاء المحتملين.',
+'Connect the full ecosystem: brand, web, commerce, AI, automation, analytics, and ongoing growth.':'اربط المنظومة بالكامل: العلامة والموقع والتجارة والذكاء الاصطناعي والأتمتة والتحليلات والنمو المستمر.',
+'Build a foundation ↗':'ابنِ الأساس ↗',
+'Create traction ↗':'اصنع زخماً ↗',
+'Remove friction ↗':'أزل التعقيد ↗',
+'Build the full system ↗':'ابنِ النظام الكامل ↗',
+
+'Built for':'مصمم لـ',
+'Different businesses.':'أعمال مختلفة.',
+'Right digital system.':'نظام رقمي مناسب.',
+'Different businesses. Right digital system.':'أعمال مختلفة. نظام رقمي مناسب.',
+'Select an industry to see how Falah can connect the important parts of that business.':'اختر مجالاً لترى كيف يمكن لفلاح ربط الأجزاء المهمة من هذا العمل.',
+'Industry system':'نظام القطاع',
+'One connected digital experience designed around the way your customers discover, trust, book, buy, and return.':'تجربة رقمية متصلة مصممة حول الطريقة التي يكتشف بها عملاؤك علامتك ويثقون بها ويحجزون ويشترون ويعودون.',
+
+'What we build':'ما نبنيه',
+'Every layer your':'كل طبقة يحتاجها',
+'business needs.':'عملك.',
+'Every layer your business needs.':'كل طبقة يحتاجها عملك.',
+'Each capability is powerful alone. The advantage comes from connecting them.':'كل قدرة قوية بمفردها. لكن الميزة الحقيقية تأتي من ربطها معاً.',
+
+'Websites':'المواقع الإلكترونية',
+'Fast, custom, conversion-focused.':'سريعة ومخصصة ومركزة على التحويل.',
+'Web Apps':'تطبيقات الويب',
+'Products built around your workflow.':'منتجات مبنية حول طريقة عملك.',
+'E-Commerce':'التجارة الإلكترونية',
+'Stores, ordering, and payments.':'متاجر وطلبات ومدفوعات.',
+'Custom Software':'البرمجيات المخصصة',
+'Tools your business actually owns.':'أدوات يمتلكها عملك فعلياً.',
+'AI Systems':'أنظمة الذكاء الاصطناعي',
+'Assistants that answer and act.':'مساعدون يجيبون ويتصرفون.',
+'Automation':'الأتمتة',
+'Less manual work, more momentum.':'عمل يدوي أقل، وزخم أكبر.',
+'Booking Systems':'أنظمة الحجوزات',
+'Appointments without the back-and-forth.':'مواعيد دون المراسلات المتكررة.',
+'Branding':'الهوية والعلامة',
+'Identity that earns trust early.':'هوية تكسب الثقة منذ البداية.',
+'Content':'المحتوى',
+'Creative that keeps you visible.':'محتوى إبداعي يحافظ على حضورك.',
+'Digital Marketing':'التسويق الرقمي',
+'Reach built around outcomes.':'وصول مبني حول النتائج.',
+'APIs & Integrations':'واجهات API والتكاملات',
+'Systems that talk to each other.':'أنظمة تتواصل مع بعضها.',
+'Dashboards':'لوحات التحكم',
+'See what your business is doing.':'شاهد ما يحدث في عملك.',
+
+'What connected growth looks like.':'هكذا يبدو النمو المتصل.',
+'A visual concept of the systems we connect for a modern business. Not another dashboard to manage. Less noise, better decisions.':'تصور بصري للأنظمة التي نربطها لعمل حديث. ليست لوحة تحكم أخرى عليك إدارتها. ضوضاء أقل وقرارات أفضل.',
+'FALAH / BUSINESS CONTROL':'فلاح / التحكم بالأعمال',
+'● All systems healthy':'● جميع الأنظمة تعمل بشكل سليم',
+'FALAH OS':'نظام فلاح',
+'Overview':'نظرة عامة',
+'Website':'الموقع',
+'Leads':'العملاء المحتملون',
+'Orders':'الطلبات',
+'Bookings':'الحجوزات',
+'Automation':'الأتمتة',
+'Analytics':'التحليلات',
+'Good morning, business.':'صباح الخير يا عمل.',
+'Your connected system is moving in the right direction.':'نظامك المتصل يتحرك في الاتجاه الصحيح.',
+'Reach': 'الوصول',
+'Conversion rate up 18%':'معدل التحويل ارتفع 18%',
+'24 leads followed up':'تمت متابعة 24 عميلاً محتملاً',
+
+'Why Falah':'لماذا فلاح',
+'One connected team beats six hand-offs.':'فريق واحد متصل أفضل من ستة أطراف.',
+'Technology should simplify the business, not create another layer of work.':'يجب أن تبسّط التقنية العمل، لا أن تضيف طبقة أخرى من التعقيد.',
+'Fragmented solution':'حلول مجزأة',
+'Falah Studios':'فلاح ستوديوز',
+'What changes':'ما الذي يتغير',
+'Separate vendors':'مزودون منفصلون',
+'One connected team':'فريق واحد متصل',
+'One strategy, one owner, one outcome':'استراتيجية واحدة، مسؤول واحد، ونتيجة واحدة',
+'Templates':'قوالب جاهزة',
+'Custom-built systems':'أنظمة مخصصة',
+'Built around your operation':'مبنية حول طريقة عملك',
+'Website only':'موقع فقط',
+'Complete digital ecosystem':'منظومة رقمية متكاملة',
+'Brand, web, content, and growth connect':'العلامة والموقع والمحتوى والنمو متصلة',
+'Build and disappear':'نبني ثم نختفي',
+'Build + support + grow':'نبني + ندعم + ننمي',
+'The system keeps improving':'النظام يستمر في التحسن',
+'Manual processes':'عمليات يدوية',
+'AI and automation':'الذكاء الاصطناعي والأتمتة',
+'Your team gets time back':'فريقك يستعيد وقته',
+'Long explanations':'شروحات طويلة',
+'Working demo-first':'عرض عملي أولاً',
+'See what is possible early':'شاهد ما هو ممكن منذ البداية',
+
+'Case studies':'دراسات الحالة',
+'Projects that do something.':'مشاريع تحقق نتائج.',
+'Real transformations, not just screenshots. See the business problem, the system, and the direction.':'تحولات حقيقية وليست مجرد لقطات شاشة. شاهد المشكلة والحل والنظام والاتجاه.',
+'Problem:':'المشكلة:',
+'Built:':'تم البناء:',
+'System:':'النظام:',
+'Live now ↗':'متاح الآن ↗',
+'Direction:':'الاتجاه:',
+'Building:':'قيد البناء:',
+'In development':'قيد التطوير',
+'Coming soon':'قريباً',
+'Turn a specialty coffee brand into a digital destination.':'تحويل علامة قهوة متخصصة إلى وجهة رقمية.',
+'Brand experience, menu, story, location, and conversion-led site.':'تجربة العلامة والقائمة والقصة والموقع وموقع إلكتروني يركز على التحويل.',
+'Website · content · mobile-first experience.':'الموقع · المحتوى · تجربة مصممة للهاتف أولاً.',
+'A luxury lifestyle identity with a digital world to match.':'هوية فاخرة لنمط الحياة مع عالم رقمي يوازيها.',
+'Brand system · website · content direction.':'نظام العلامة · الموقع · توجيه المحتوى.',
+'A future-facing brand designed to feel clear, intelligent, and distinct.':'علامة مستقبلية مصممة لتكون واضحة وذكية ومميزة.',
+'Strategy · identity · digital experience.':'الاستراتيجية · الهوية · التجربة الرقمية.',
+
+'The way we work':'طريقتنا في العمل',
+'Discover. Design. Build. Launch. Grow.':'اكتشف. صمم. ابنِ. أطلق. نمِ.',
+'Falah does not disappear when the website ships. The launch is where the useful part begins.':'فلاح لا يختفي بعد إطلاق الموقع. الإطلاق هو المكان الذي يبدأ فيه الجزء المفيد.',
+'Discover':'اكتشف',
+'Understand the business, audience, friction, and opportunity.':'افهم العمل والجمهور ونقاط الاحتكاك والفرص.',
+'Design':'صمم',
+'Shape the story, identity, flows, and system architecture.':'شكّل القصة والهوية والتدفقات وبنية النظام.',
+'Build':'ابنِ',
+'Engineer the website, software, integrations, and automation.':'طوّر الموقع والبرمجيات والتكاملات والأتمتة.',
+'Launch':'أطلق',
+'Put a working system in front of real people and customers.':'ضع نظاماً عملياً أمام أشخاص وعملاء حقيقيين.',
+'Grow':'نمِ',
+'Measure, refine, support, and find the next advantage.':'قس وطور وادعم وابحث عن الميزة التالية.',
+
+'Engagements':'طرق التعاون',
+'Start where you are.':'ابدأ من مكانك.',
+'Build from there.':'وابنِ من هناك.',
+'Start where you are. Build from there.':'ابدأ من مكانك. وابنِ من هناك.',
+'Starting points only. Every proposal is tailored to your business and scope.':'هذه مجرد نقاط بداية. كل عرض يتم تخصيصه لعملك ونطاق المشروع.',
+'Start with clarity':'ابدأ بالوضوح',
+'Signal Sprint':'Signal Sprint',
+'A focused strategy session for founders who need a sharper position and a plan.':'جلسة استراتيجية مركزة للمؤسسين الذين يحتاجون إلى تموضع أوضح وخطة عملية.',
+'Discovery and goal mapping':'الاكتشاف وتحديد الأهداف',
+'Audience and offer direction':'تحديد الجمهور والعرض',
+'Digital roadmap':'خارطة الطريق الرقمية',
+'Complete package':'الباقة المتكاملة',
+'Digital Business':'العمل الرقمي',
+'Website, brand, content, social, advertising, automation, AI chatbot, and priority support.':'موقع، علامة، محتوى، وسائل تواصل، إعلانات، أتمتة، روبوت محادثة بالذكاء الاصطناعي، ودعم بأولوية.',
+'One team and one strategy':'فريق واحد واستراتيجية واحدة',
+'Scope built around your business':'نطاق مبني حول عملك',
+'Ongoing growth direction':'توجيه مستمر للنمو',
+'Build the system':'ابنِ النظام',
+'Custom Build':'بناء مخصص',
+"For businesses that need a connected website, software, AI, automation, and growth infrastructure.":'للشركات التي تحتاج إلى موقع وبرمجيات وذكاء اصطناعي وأتمتة وبنية نمو متصلة.',
+"Let's scope it":'لنحدد النطاق',
+'Working demo-first approach':'نهج العرض العملي أولاً',
+'Custom integrations and systems':'تكاملات وأنظمة مخصصة',
+'Support after launch':'دعم بعد الإطلاق',
+
+'The team':'الفريق',
+'The people building the system.':'الأشخاص الذين يبنون النظام.',
+'Falah Studios is built around hands-on ownership. Strategy, finance, social, creative, and engineering stay close to the work.':'فلاح ستوديوز مبني على المسؤولية المباشرة. تبقى الاستراتيجية والمالية والتواصل الاجتماعي والإبداع والهندسة قريبة من العمل.',
+'Founder':'المؤسس',
+'Finance':'المالية',
+'Social':'التواصل الاجتماعي',
+'Creative':'الإبداع',
+'CEO · Founder · Software Engineer':'الرئيس التنفيذي · المؤسس · مهندس برمجيات',
+'CFO · Software Engineer · Web Developer':'المدير المالي · مهندس برمجيات · مطور مواقع',
+'Social Media Manager · Brand Designer':'مدير وسائل التواصل الاجتماعي · مصمم علامات',
+'Creative Director':'المدير الإبداعي',
+'Leads the studio, shapes the strategy, and builds the websites, apps, and software that turn ambitious ideas into working systems.':'يقود الاستوديو ويضع الاستراتيجية ويبني المواقع والتطبيقات والبرمجيات التي تحول الأفكار الطموحة إلى أنظمة عملية.',
+'Oversees the studio’s financial discipline while contributing directly to web and software development.':'يشرف على الانضباط المالي للاستوديو ويساهم مباشرة في تطوير المواقع والبرمجيات.',
+'Runs client social accounts and creates the content, graphics, and visual systems that build recognition.':'يدير حسابات العملاء على وسائل التواصل وينشئ المحتوى والرسومات والأنظمة البصرية التي تبني الحضور.',
+'Directs the visual world from first concept to final detail, keeping every touchpoint clear and distinctive.':'يقود العالم البصري من الفكرة الأولى إلى التفاصيل النهائية، مع الحفاظ على وضوح وتميز كل نقطة تواصل.',
+
+'Ready to build your system?':'مستعد لبناء نظامك؟',
+'Tell us what you are trying to accomplish.':'أخبرنا بما تحاول تحقيقه.',
+"We’ll show you what’s possible, what to build first, and where the biggest opportunity is hiding.":'سنوضح لك ما هو ممكن، وما الذي يجب بناؤه أولاً، وأين تكمن أكبر فرصة.',
+'Email':'البريد الإلكتروني',
+'Direct call':'اتصال مباشر',
+'WhatsApp':'واتساب',
+'Start a chat':'ابدأ محادثة',
+'WhatsApp · Start a chat ↗':'واتساب · ابدأ محادثة ↗',
+'Your name *':'اسمك *',
+'Your name \\*':'اسمك *',
+'Business name':'اسم العمل',
+'Email address *':'البريد الإلكتروني *',
+'Email address \\*':'البريد الإلكتروني *',
+'What are you trying to accomplish?':'ما الذي تحاول تحقيقه؟',
+'Start the conversation ↗':'ابدأ المحادثة ↗',
+
+'Instagram':'إنستغرام',
+'TikTok':'تيك توك',
+'Back to top ↑':'العودة إلى الأعلى ↑'
+};
+
+const list=document.querySelector('#systemList');
+const detail=document.querySelector('#systemDetail');
+
+function showSystem(i){
+    const s=systems[i];
+    const a=systemsAR[i];
+
+    list.querySelector('.active')?.classList.remove('active');
+    list.children[i].classList.add('active');
+
+    const isEN=document.documentElement.lang==='en';
+    const name=isEN?s[1]:a[0];
+    const description=isEN?s[2]:a[1];
+    const chips=isEN?s[3]:a[2];
+
+    detail.innerHTML=`
+        <div class="detail-number">${s[0]} / ${name}</div>
+        <h3>${name}</h3>
+        <p>${description}</p>
+        <div class="chips">${chips.map(x=>`<span>${x}</span>`).join('')}</div>
+        <span class="detail-arrow">${isEN?`Layer ${s[0]} of 07 · See what we can build ↗`:`الطبقة ${s[0]} من 07 · شاهد ما يمكننا بناؤه ↗`}</span>
+    `;
+}
+
+systems.forEach((s,i)=>{
+    const b=document.createElement('button');
+    b.className='system-item';
+    b.innerHTML=`
+        <span class="number">${s[0]}</span>
+        <strong>${s[1]}</strong>
+        <span>${i===0?'Start here':'Layer'}</span>
+    `;
+    b.onclick=()=>showSystem(i);
+    list.appendChild(b);
+});
+
+const tabs=document.querySelector('#industryTabs');
+const indDetail=document.querySelector('#industryDetail');
+
+function showIndustry(i){
+    tabs.querySelector('.active')?.classList.remove('active');
+    tabs.children[i].classList.add('active');
+
+    const x=industries[i];
+    const xa=industriesAR[i];
+    const isEN=document.documentElement.lang==='en';
+
+    indDetail.innerHTML=`
+        <div class="eyebrow">${isEN?'Industry system':'نظام القطاع'}</div>
+        <h3>${isEN?x[0]:xa[0]}</h3>
+        <p>${isEN
+            ?'One connected digital experience designed around the way your customers discover, trust, book, buy, and return.'
+            :'تجربة رقمية متصلة مصممة حول الطريقة التي يكتشف بها عملاؤك علامتك ويثقون بها ويحجزون ويشترون ويعودون.'
+        }</p>
+        <div class="industry-stack">
+            ${(isEN?x[1]:xa[1]).split(' + ').map(y=>`<span>${y}</span>`).join('')}
+        </div>
+    `;
+}
+
+industries.forEach((x,i)=>{
+    const b=document.createElement('button');
+    b.textContent=x[0];
+    b.onclick=()=>showIndustry(i);
+    tabs.appendChild(b);
+});
+
+showSystem(0);
+showIndustry(0);
+
+const nav=document.querySelector('#nav');
+
+addEventListener('scroll',()=>{
+    nav.classList.toggle('scrolled',scrollY>35);
+},{passive:true});
+
+const observer=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+        if(e.isIntersecting){
+            e.target.classList.add('show');
+            observer.unobserve(e.target);
+        }
+    });
+},{threshold:.12});
+
+document.querySelectorAll('.reveal').forEach(e=>observer.observe(e));
+
+const lang=document.querySelector('#lang');
+let english=new URLSearchParams(location.search).get('lang')!=='ar';
+
+function translateStatic(isEnglish){
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const source=el.dataset.source||el.textContent.trim();
+        el.dataset.source=source;
+        el.textContent=isEnglish?source:(ar[source]||source);
+    });
+}
+
+function markTranslatable(){
+    const selectors='a,button,h1,h2,h3,h4,p,span,small,strong,div,li,label';
+
+    document.querySelectorAll(selectors).forEach(el=>{
+        if(el.children.length===0){
+            const text=el.textContent.trim();
+
+            if(text && ar[text]){
+                el.dataset.i18n='true';
+                el.dataset.source=text;
+            }
+        }
+    });
+}
+
+function setLanguage(isEnglish){
+    document.documentElement.lang=isEnglish?'en':'ar';
+    document.body.dir=isEnglish?'ltr':'rtl';
+
+    lang.innerHTML=isEnglish
+        ?'<b>EN</b> / AR'
+        :'EN / <b>AR</b>';
+
+    markTranslatable();
+    translateStatic(isEnglish);
+
+    showSystem(
+        [...list.children].findIndex(x=>x.classList.contains('active'))<0
+        ?0
+        :[...list.children].findIndex(x=>x.classList.contains('active'))
+    );
+
+    showIndustry(
+        [...tabs.children].findIndex(x=>x.classList.contains('active'))<0
+        ?0
+        :[...tabs.children].findIndex(x=>x.classList.contains('active'))
+    );
+}
+
+setLanguage(english);
+
+lang.onclick=()=>{
+    location.search=english?'?lang=ar':'';
+};
+
+if(matchMedia('(pointer:fine)').matches){
+    const dot=document.createElement('i');
+    const ring=document.createElement('i');
+
+    Object.assign(dot.style,{
+        position:'fixed',
+        width:'5px',
+        height:'5px',
+        borderRadius:'50%',
+        background:'var(--gold)',
+        pointerEvents:'none',
+        zIndex:99
+    });
+
+    Object.assign(ring.style,{
+        position:'fixed',
+        width:'30px',
+        height:'30px',
+        border:'1px solid var(--gold)',
+        borderRadius:'50%',
+        pointerEvents:'none',
+        zIndex:98,
+        transition:'transform .1s ease, width .2s ease,height .2s ease'
+    });
+
+    document.body.append(dot,ring);
+
+    let x=-50,y=-50,rx=x,ry=y;
+
+    addEventListener('mousemove',e=>{
+        x=e.clientX;
+        y=e.clientY;
+        dot.style.transform=`translate(${x-2}px,${y-2}px)`;
+    });
+
+    function follow(){
+        rx+=(x-rx)*.3;
+        ry+=(y-ry)*.3;
+        ring.style.transform=`translate(${rx-15}px,${ry-15}px)`;
+        requestAnimationFrame(follow);
+    }
+
+    follow();
+
+    document.querySelectorAll('a,button').forEach(el=>{
+        el.addEventListener('mouseenter',()=>{
+            ring.style.width='52px';
+            ring.style.height='52px';
+        });
+
+        el.addEventListener('mouseleave',()=>{
+            ring.style.width='30px';
+            ring.style.height='30px';
+        });
+    });
+}
 </script>
 </body></html>
