@@ -2,11 +2,19 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { AppError } from "../utils/error-handler";
 
-const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key-change-in-production";
+const JWT_SECRET =
+  process.env.JWT_SECRET || "your-secret-key-change-in-production";
 
 export interface AuthRequest extends Request {
   userId?: string;
   userRole?: string;
+  clientId?: string;
+}
+
+interface JwtPayload {
+  userId?: string;
+  userRole?: string;
+  clientId?: string;
 }
 
 export function authenticate(
@@ -21,12 +29,15 @@ export function authenticate(
       throw new AppError("No authorization token provided", 401);
     }
 
-    const decoded = jwt.verify(token, JWT_SECRET) as {
-      userId: string;
-      userRole: string;
-    };
+    const decoded = jwt.verify(token, JWT_SECRET) as JwtPayload;
+
     req.userId = decoded.userId;
     req.userRole = decoded.userRole;
+    req.clientId = decoded.clientId;
+
+    if (!req.userId && !req.clientId) {
+      throw new AppError("Invalid authentication token", 401);
+    }
 
     next();
   } catch (error) {
@@ -48,8 +59,20 @@ export function authorize(...roles: string[]) {
   };
 }
 
-export function generateToken(userId: string, userRole: string): string {
-  return jwt.sign({ userId, userRole }, JWT_SECRET, {
-    expiresIn: "30d",
-  });
+export function generateToken(
+  userId: string,
+  userRole: string,
+  clientId?: string
+): string {
+  return jwt.sign(
+    {
+      userId,
+      userRole,
+      clientId,
+    },
+    JWT_SECRET,
+    {
+      expiresIn: "30d",
+    }
+  );
 }

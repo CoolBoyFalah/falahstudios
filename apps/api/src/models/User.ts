@@ -6,11 +6,13 @@ export interface IUser extends Document {
   password: string;
   name: string;
   role: "admin" | "editor" | "user";
+  clientId?: mongoose.Types.ObjectId;
   isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
   comparePassword(password: string): Promise<boolean>;
 }
+
 
 const UserSchema = new Schema<IUser>(
   {
@@ -36,6 +38,12 @@ const UserSchema = new Schema<IUser>(
       enum: ["admin", "editor", "user"],
       default: "user",
     },
+    clientId: {
+  type: Schema.Types.ObjectId,
+  ref: "Client",
+  required: false,
+  index: true,
+},
     isActive: {
       type: Boolean,
       default: true,

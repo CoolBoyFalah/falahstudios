@@ -1,20 +1,17 @@
 import { Request, Response, NextFunction } from "express";
-import { ValidationError } from "joi";
+import Joi from "joi";
+import { AppError } from "../utils/error-handler";
 
 export function validationErrorHandler(
-  err: Error,
+  err: any,
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  if (err instanceof ValidationError) {
+  if (err instanceof Joi.ValidationError) {
     return res.status(400).json({
       success: false,
-      message: "Validation failed",
-      details: err.details.map((detail) => ({
-        field: detail.path.join("."),
-        message: detail.message,
-      })),
+      error: err.details.map((detail) => detail.message).join(", "),
     });
   }
 

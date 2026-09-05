@@ -8,7 +8,8 @@
   },
   "workspaces": [
     "apps/web",
-    "apps/api"
+    "apps/api",
+    "apps/os"
   ],
   "scripts": {
     "dev": "concurrently \"yarn workspace @falah/web dev\" \"yarn workspace @falah/api dev\"",
