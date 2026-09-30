@@ -49,7 +49,7 @@ export class AuthController {
   static access = asyncHandler(async (req: Request, res: Response) => {
     const { accessCode } = req.body;
 
-    if (!accessCode) {
+    if (typeof accessCode !== "string" || !accessCode.trim()) {
       throw new AppError("Access code is required", 400);
     }
 

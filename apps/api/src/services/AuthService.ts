@@ -80,10 +80,10 @@ export class AuthService {
   }
 
   async loginWithAccessCode(accessCode: string) {
-    const normalizedCode = accessCode.trim().toUpperCase();
+    const normalizedCode = accessCode.trim().toUpperCase().replace(/\s+/g, "");
     const parts = normalizedCode.split("-");
 
-    if (parts.length !== 3 || parts[0] !== "FAL") {
+    if (parts.length !== 3 || parts[0] !== "FAL" || !parts[1] || !parts[2] || normalizedCode.length > 64) {
       throw new AppError("Invalid access code", 401);
     }
 

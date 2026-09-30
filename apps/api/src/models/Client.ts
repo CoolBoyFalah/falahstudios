@@ -7,6 +7,14 @@ export interface IClient extends Document {
   clientCode: string;
   accessCodeHash: string;
   isActive: boolean;
+  /** Default currency for new orders (ISO 4217). */
+  currency: string;
+  /** VAT/sales tax as a percentage, e.g. 5 for UAE VAT. 0 disables tax lines. */
+  taxRate: number;
+  /** When true, catalog and order prices already include tax. */
+  pricesIncludeTax: boolean;
+  taxNumber: string;
+  receiptNote: string;
   createdAt: Date;
   updatedAt: Date;
   compareAccessCode(secret: string): Promise<boolean>;
@@ -46,6 +54,12 @@ const ClientSchema = new Schema<IClient>(
       type: Boolean,
       default: true,
     },
+
+    currency: { type: String, default: "AED", uppercase: true, trim: true },
+    taxRate: { type: Number, default: 0, min: 0, max: 100 },
+    pricesIncludeTax: { type: Boolean, default: true },
+    taxNumber: { type: String, default: "", trim: true },
+    receiptNote: { type: String, default: "", trim: true },
   },
   { timestamps: true }
 );

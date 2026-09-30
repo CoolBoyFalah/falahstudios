@@ -1,133 +1,118 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Preferences } from "../components/Shell";
+import { Icon } from "../components/icons";
+import { publicApi } from "../lib/api";
+import { usePreferences } from "../lib/i18n";
+import { getToken, saveSession, type SessionClient } from "../lib/session";
 
-export default function Home() {
+/** Normalises typing/pasting into the FAL-XXXX-XXXXXXXX shape. */
+function formatCode(raw: string) {
+  const clean = raw.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 24);
+  if ("FAL".startsWith(clean)) return clean;
+  const body = clean.startsWith("FAL") ? clean.slice(3) : clean;
+  return ["FAL", body.slice(0, 4), body.slice(4)].filter(Boolean).join("-");
+}
+
+export default function SignIn() {
+  const { t, errorText } = usePreferences();
   const [accessCode, setAccessCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  async function handleContinue() {
+  useEffect(() => {
+    if (getToken()) {
+      window.location.replace("/dashboard");
+      return;
+    }
+    if (new URLSearchParams(window.location.search).get("expired")) setError(t("login.expired"));
+    inputRef.current?.focus();
+    // Only on first mount; the message is re-translated if the language changes below.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  async function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
     setError("");
 
     if (!accessCode.trim()) {
-      setError("Enter your access code.");
+      setError(t("login.required"));
+      inputRef.current?.focus();
       return;
     }
 
     setLoading(true);
-
     try {
-      const response = await fetch(
-        "http://localhost:5001/api/auth/access",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            accessCode: accessCode.trim(),
-          }),
-        }
-      );
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.error || "Invalid access code.");
-      }
-
-      localStorage.setItem("falah_os_token", result.data.token);
-      localStorage.setItem(
-        "falah_os_client",
-        JSON.stringify(result.data.client)
-      );
-
-      window.location.href = "/dashboard";
-    } catch (error) {
-      setError(
-        error instanceof Error
-          ? error.message
-          : "Something went wrong."
-      );
-    } finally {
+      const result = await publicApi<{ token: string; client: SessionClient }>("/auth/access", {
+        method: "POST",
+        body: JSON.stringify({ accessCode: accessCode.trim() }),
+      });
+      saveSession(result.token, result.client);
+      window.location.assign("/dashboard");
+    } catch (reason) {
+      setError(errorText(reason instanceof Error ? reason.message : null));
       setLoading(false);
+      inputRef.current?.select();
     }
   }
 
   return (
-    <main className="min-h-screen bg-black text-white flex items-center justify-center px-6">
-      <div className="w-full max-w-md text-center">
-        <div className="mb-14">
-          <p className="text-[11px] font-medium tracking-[0.45em] text-zinc-500 uppercase">
-            Falah Studios
-          </p>
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 py-16">
+      <div className="pointer-events-none absolute inset-0 os-shell opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
+      <div className="absolute end-5 top-5"><Preferences compact /></div>
 
-          <h1 className="mt-5 text-5xl sm:text-6xl font-semibold tracking-[-0.04em]">
-            Falah OS
-          </h1>
+      <div className="relative w-full max-w-md animate-fade-up text-center">
+        <div className="mx-auto mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-300 to-amber-600 text-xl font-black text-[#160e03] shadow-[0_0_48px_rgba(232,160,32,0.35)]">F</div>
+        <p className="os-kicker !tracking-[0.45em]">{t("brand.studio")}</p>
+        <h1 className="mt-4 text-5xl font-semibold tracking-[-0.04em] sm:text-6xl">{t("brand.os")}</h1>
+        <p className="mt-4 text-sm text-muted">{t("brand.tagline")}</p>
 
-          <p className="mt-4 text-sm text-zinc-500">
-            Your business, simplified.
-          </p>
-        </div>
-
-        <div className="text-left">
-          <label
-            htmlFor="access-code"
-            className="mb-3 block text-[10px] font-medium tracking-[0.25em] text-zinc-500 uppercase"
-          >
-            Access code
-          </label>
-
+        <form onSubmit={handleSubmit} noValidate className="os-panel mt-12 rounded-2xl p-5 text-start sm:p-6">
+          <label htmlFor="access-code" className="os-kicker mb-3 block">{t("login.label")}</label>
           <input
+            ref={inputRef}
             id="access-code"
             type="text"
+            inputMode="text"
             value={accessCode}
             onChange={(event) => {
-              setAccessCode(event.target.value);
+              setAccessCode(formatCode(event.target.value));
               setError("");
             }}
-            onKeyDown={(event) => {
-              if (event.key === "Enter") {
-                handleContinue();
-              }
-            }}
-            placeholder="FAL-XXXX-XXXX"
-            autoComplete="off"
+            placeholder="FAL-XXXX-XXXXXXXX"
+            autoComplete="one-time-code"
+            autoCapitalize="characters"
             spellCheck={false}
-            className="h-14 w-full rounded-xl border border-zinc-800 bg-zinc-950 px-5 text-sm text-white outline-none transition placeholder:text-zinc-700 focus:border-zinc-500"
+            dir="ltr"
+            aria-invalid={Boolean(error)}
+            aria-describedby={error ? "access-error" : undefined}
+            className="os-field h-14 px-5 font-mono text-base tracking-[0.12em]"
           />
 
           {error && (
-            <p className="mt-3 text-xs text-red-400">
+            <p id="access-error" role="alert" className="mt-3 flex items-start gap-2 text-xs text-danger">
+              <Icon.Alert size={14} className="mt-px shrink-0" />
               {error}
             </p>
           )}
 
-          <button
-            type="button"
-            onClick={handleContinue}
-            disabled={loading}
-            className="mt-3 h-14 w-full rounded-xl bg-white text-sm font-medium text-black transition hover:bg-zinc-200 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            {loading ? "Connecting..." : "Continue"}
+          <button type="submit" disabled={loading} className="os-amber-button mt-4 flex h-14 w-full items-center justify-center gap-2 rounded-xl text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-60">
+            {loading ? (
+              <><span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-e-transparent" />{t("login.connecting")}</>
+            ) : (
+              <>{t("login.continue")}<Icon.Arrow size={16} /></>
+            )}
           </button>
-        </div>
+        </form>
 
-        <p className="mt-8 text-xs text-zinc-600">
-          Don&apos;t have an access code?{" "}
-          <a
-            href="mailto:hello@falahstudios.com"
-            className="text-zinc-400 transition hover:text-white"
-          >
-            Contact Falah Studios
-          </a>
+        <p className="mt-8 text-xs text-muted">
+          {t("login.noCode")}{" "}
+          <a href="mailto:hello@falahstudios.com" className="text-gold-text underline-offset-4 transition hover:underline">{t("login.contact")}</a>
         </p>
 
-        <p className="mt-16 text-[9px] tracking-[0.3em] text-zinc-800 uppercase">
-          Falah OS · v1.00
-        </p>
+        <p className="os-kicker mt-16 !text-[9px] !text-faint">{t("brand.version")}</p>
       </div>
     </main>
   );

@@ -1,9 +1,14 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
+import Client from "../models/Client";
 import { AppError } from "../utils/error-handler";
 
 const JWT_SECRET =
   process.env.JWT_SECRET || "your-secret-key-change-in-production";
+
+if (!process.env.JWT_SECRET && process.env.NODE_ENV === "production") {
+  throw new Error("JWT_SECRET must be set in production");
+}
 
 export interface AuthRequest extends Request {
   userId?: string;
@@ -23,15 +28,15 @@ export function authenticate(
   next: NextFunction
 ) {
   try {
-    const token = req.headers.authorization?.split(" ")[1];
+    const [scheme, token] = req.headers.authorization?.split(" ") ?? [];
 
-    if (!token) {
+    if (scheme !== "Bearer" || !token) {
       throw new AppError("No authorization token provided", 401);
     }
 
     const decoded = jwt.verify(token, JWT_SECRET) as JwtPayload;
 
-    req.userId = decoded.userId;
+    req.userId = decoded.userId || undefined;
     req.userRole = decoded.userRole;
     req.clientId = decoded.clientId;
 
@@ -42,10 +47,35 @@ export function authenticate(
     next();
   } catch (error) {
     if (error instanceof jwt.JsonWebTokenError) {
-      next(new AppError("Invalid or expired token", 401));
+      next(new AppError("Your session has expired. Please sign in again.", 401));
     } else {
       next(error);
     }
+  }
+}
+
+/**
+ * Ensures the token belongs to a client workspace that still exists and is
+ * active, so deactivating a client locks out every token already issued.
+ */
+export async function requireClient(
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    if (!req.clientId) {
+      throw new AppError("Client authentication is required", 403);
+    }
+
+    const exists = await Client.exists({ _id: req.clientId, isActive: true });
+    if (!exists) {
+      throw new AppError("This workspace is no longer active.", 401);
+    }
+
+    next();
+  } catch (error) {
+    next(error);
   }
 }
 
@@ -66,7 +96,7 @@ export function generateToken(
 ): string {
   return jwt.sign(
     {
-      userId,
+      userId: userId || undefined,
       userRole,
       clientId,
     },

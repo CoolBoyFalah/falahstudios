@@ -1,9 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import Joi from "joi";
-import { AppError } from "../utils/error-handler";
 
 export function validationErrorHandler(
-  err: any,
+  err: unknown,
   req: Request,
   res: Response,
   next: NextFunction
@@ -11,7 +10,7 @@ export function validationErrorHandler(
   if (err instanceof Joi.ValidationError) {
     return res.status(400).json({
       success: false,
-      error: err.details.map((detail) => detail.message).join(", "),
+      message: err.details.map((detail) => detail.message).join(", "),
     });
   }
 

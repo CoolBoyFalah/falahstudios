@@ -2,72 +2,179 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --os-bg: #080808;
-  --os-surface: #0f0f0f;
-  --os-border: #27231d;
-  --os-text: #f2ede6;
-  --os-muted: #a49d92;
-  --os-amber: #e8a020;
-}
-
-body {
-  color: var(--os-text);
-  background: var(--os-bg);
-  font-family: Arial, Helvetica, sans-serif;
-  min-height: 100vh;
-  background-image: radial-gradient(circle at 82% -10%, rgba(232, 160, 32, 0.13), transparent 32rem), radial-gradient(circle at -10% 75%, rgba(184, 122, 16, 0.08), transparent 30rem);
+/* Colour tokens are RGB channels so Tailwind opacity modifiers work (bg-gold/10). */
+:root,
+html[data-theme="dark"] {
+  --os-bg: 8 8 8;
+  --os-surface: 15 15 15;
+  --os-raised: 21 19 16;
+  --os-border: 39 35 29;
+  --os-text: 242 237 230;
+  --os-muted: 164 157 146;
+  --os-faint: 110 103 93;
+  --os-amber: 232 160 32;
+  --os-amber-light: 245 185 66;
+  --os-amber-deep: 184 122 16;
+  --os-amber-text: 245 185 66;
+  --os-danger: 248 113 113;
+  --os-success: 110 231 160;
+  --os-info: 125 211 252;
+  --os-chart: 232 160 32;
+  color-scheme: dark;
 }
 
 html[data-theme="light"] {
-  --os-bg: #f6f1e8;
-  --os-surface: #fffaf2;
-  --os-border: #ded2c0;
-  --os-text: #211d17;
-  --os-muted: #71685d;
+  --os-bg: 246 241 232;
+  --os-surface: 255 250 242;
+  --os-raised: 255 253 249;
+  --os-border: 222 210 192;
+  --os-text: 33 29 23;
+  --os-muted: 113 104 93;
+  --os-faint: 150 141 128;
+  --os-amber-text: 158 101 6;
+  --os-danger: 190 40 40;
+  --os-success: 22 128 72;
+  --os-info: 3 105 161;
+  /* #b87a10: 3:1+ against the cream surface; plain gold is only 2.1:1. */
+  --os-chart: 184 122 16;
+  color-scheme: light;
 }
 
-html[data-theme="light"] .bg-black { background-color: var(--os-bg) !important; }
-html[data-theme="light"] .bg-zinc-950 { background-color: var(--os-surface) !important; }
-html[data-theme="light"] .text-white { color: var(--os-text) !important; }
-html[data-theme="light"] .text-zinc-500, html[data-theme="light"] .text-zinc-600, html[data-theme="light"] .text-zinc-700 { color: var(--os-muted) !important; }
-html[data-theme="light"] .border-zinc-900, html[data-theme="light"] .border-zinc-800, html[data-theme="light"] .divide-zinc-900 { border-color: var(--os-border) !important; }
-html[data-theme="light"] .field { background-color: #fffdf9 !important; color: var(--os-text) !important; }
-
-html[dir="rtl"] aside { left: auto !important; right: 0; border-left: 1px solid var(--os-border); border-right: 0; }
-html[dir="rtl"] .lg\:pl-72 { padding-left: 0 !important; padding-right: 18rem; }
-html[dir="rtl"] .text-left { text-align: right; }
-html[dir="rtl"] .text-right { text-align: left; }
-
-::selection { background: var(--os-amber); color: #080808; }
-
-.os-shell {
-  background-image: linear-gradient(90deg, rgba(232, 160, 32, 0.035) 1px, transparent 1px), linear-gradient(rgba(232, 160, 32, 0.025) 1px, transparent 1px);
-  background-size: 56px 56px;
+body {
+  color: rgb(var(--os-text));
+  background-color: rgb(var(--os-bg));
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 82% -10%, rgba(232, 160, 32, 0.13), transparent 32rem),
+    radial-gradient(circle at -10% 75%, rgba(184, 122, 16, 0.08), transparent 30rem);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
 }
 
-.os-panel {
-  border: 1px solid rgba(232, 160, 32, 0.16);
-  background: linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.015));
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 24px 70px rgba(0,0,0,0.18);
+::selection {
+  background: rgb(var(--os-amber));
+  color: #080808;
 }
 
-.os-panel:hover { border-color: rgba(232, 160, 32, 0.32); }
-.os-kicker { color: #f5b942; letter-spacing: 0.24em; text-transform: uppercase; font-size: 10px; font-weight: 600; }
-.os-amber-button { background: linear-gradient(135deg, #f5b942, #d88912); color: #1a1207; box-shadow: 0 12px 28px rgba(232,160,32,0.22); }
-.os-amber-button:hover { transform: translateY(-1px); box-shadow: 0 16px 36px rgba(232,160,32,0.34); }
-.os-quiet-button { border: 1px solid rgba(232,160,32,0.23); background: rgba(232,160,32,0.06); color: #f5b942; }
-.os-metric { font-variant-numeric: tabular-nums; letter-spacing: -0.05em; }
+:focus-visible {
+  outline: 2px solid rgb(var(--os-amber) / 0.7);
+  outline-offset: 2px;
+}
 
-html[data-theme="light"] .os-panel { background: linear-gradient(145deg, rgba(255,255,255,0.98), rgba(255,248,237,0.8)); box-shadow: 0 20px 60px rgba(66, 43, 10, 0.08); }
-html[data-theme="light"] .os-shell { background-image: linear-gradient(90deg, rgba(184,122,16,0.07) 1px, transparent 1px), linear-gradient(rgba(184,122,16,0.05) 1px, transparent 1px); }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer components {
+  .os-shell {
+    background-image:
+      linear-gradient(90deg, rgba(232, 160, 32, 0.035) 1px, transparent 1px),
+      linear-gradient(rgba(232, 160, 32, 0.025) 1px, transparent 1px);
+    background-size: 56px 56px;
   }
 
-  .field {
-    @apply h-11 w-full rounded-xl border border-zinc-800 bg-black px-3 text-sm text-white outline-none transition placeholder:text-zinc-700 focus:border-amber-500;
+  .os-panel {
+    border: 1px solid rgba(232, 160, 32, 0.16);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 24px 70px rgba(0, 0, 0, 0.18);
+  }
+
+  .os-panel-hover {
+    transition: border-color 0.2s, transform 0.3s;
+  }
+  .os-panel-hover:hover {
+    border-color: rgba(232, 160, 32, 0.32);
+  }
+
+  .os-kicker {
+    color: rgb(var(--os-amber-text));
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .os-amber-button {
+    background: linear-gradient(135deg, #f5b942, #d88912);
+    color: #1a1207;
+    box-shadow: 0 12px 28px rgba(232, 160, 32, 0.22);
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+  }
+  .os-amber-button:not(:disabled):hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 36px rgba(232, 160, 32, 0.34);
+  }
+
+  .os-quiet-button {
+    border: 1px solid rgba(232, 160, 32, 0.23);
+    background: rgba(232, 160, 32, 0.06);
+    color: rgb(var(--os-amber-text));
+    transition: background-color 0.15s, border-color 0.15s;
+  }
+  .os-quiet-button:not(:disabled):hover {
+    background: rgba(232, 160, 32, 0.12);
+    border-color: rgba(232, 160, 32, 0.4);
+  }
+
+  .os-metric {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.05em;
+  }
+
+  .os-field {
+    @apply h-11 w-full rounded-xl border border-line bg-bg/70 px-3.5 text-sm text-fg outline-none transition placeholder:text-faint focus:border-gold/70 focus:ring-2 focus:ring-gold/15 disabled:opacity-60;
+  }
+
+  .os-gold-text {
+    @apply bg-gradient-to-r from-amber-300 via-amber-500 to-amber-600 bg-clip-text text-transparent;
+  }
+}
+
+html[data-theme="light"] .os-panel {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 248, 237, 0.8));
+  box-shadow: 0 20px 60px rgba(66, 43, 10, 0.08);
+  border-color: rgba(184, 122, 16, 0.2);
+}
+html[data-theme="light"] .os-shell {
+  background-image:
+    linear-gradient(90deg, rgba(184, 122, 16, 0.07) 1px, transparent 1px),
+    linear-gradient(rgba(184, 122, 16, 0.05) 1px, transparent 1px);
+}
+html[data-theme="light"] .os-gold-text {
+  @apply from-amber-600 via-amber-600 to-amber-700;
+}
+
+/* Arabic script doesn't use letter-spacing or capitals. */
+html[lang="ar"] .os-kicker,
+html[lang="ar"] .tracking-wide-label {
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 11px;
+}
+
+/* Directional icons (arrows, chevrons) flip in RTL. */
+/* `scale` (not `transform`) so it composes with Tailwind rotate utilities. */
+html[dir="rtl"] .rtl-flip {
+  scale: -1 1;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgb(var(--os-text) / 0.06);
+  border-radius: 0.5rem;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgb(var(--os-text) / 0.06), transparent);
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

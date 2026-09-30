@@ -1,6 +1,7 @@
 import mongoose, { Document, Schema } from "mongoose";
 
-export type BookingStatus = "pending" | "confirmed" | "completed" | "cancelled";
+export const BOOKING_STATUSES = ["pending", "confirmed", "completed", "cancelled"] as const;
+export type BookingStatus = (typeof BOOKING_STATUSES)[number];
 
 export interface IBooking extends Document {
   clientId: mongoose.Types.ObjectId;
@@ -8,6 +9,7 @@ export interface IBooking extends Document {
   customerEmail?: string;
   service: string;
   scheduledFor: Date;
+  durationMinutes: number;
   status: BookingStatus;
   notes: string;
   createdAt: Date;
@@ -21,7 +23,8 @@ const BookingSchema = new Schema<IBooking>(
     customerEmail: { type: String, trim: true, lowercase: true },
     service: { type: String, required: true, trim: true },
     scheduledFor: { type: Date, required: true },
-    status: { type: String, enum: ["pending", "confirmed", "completed", "cancelled"], default: "pending" },
+    durationMinutes: { type: Number, default: 60, min: 5 },
+    status: { type: String, enum: BOOKING_STATUSES, default: "pending" },
     notes: { type: String, default: "", trim: true },
   },
   { timestamps: true }
