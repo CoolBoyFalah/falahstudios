@@ -44,7 +44,9 @@ async function uniqueClientCode() {
 
 async function main() {
   const args = process.argv.slice(2);
-  await mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/falah-studios");
+  await mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/falah-studios", {
+    dbName: process.env.MONGODB_DB || "falah-studios",
+  });
 
   const secret = randomCode(8);
   const accessCodeHash = await bcrypt.hash(secret, 10);

@@ -4,10 +4,14 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/falah-studios";
+// Pinned so data always lands in the same database, whatever path the URI has
+// (Atlas's default connection string has none, which would mean "test").
+export const DB_NAME = process.env.MONGODB_DB || "falah-studios";
 
 export async function connectDatabase() {
   try {
     await mongoose.connect(MONGODB_URI, {
+      dbName: DB_NAME,
       maxPoolSize: 10,
       serverSelectionTimeoutMS: 5000,
     });
