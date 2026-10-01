@@ -8,6 +8,7 @@ import authRouter from "./auth";
 import websiteRouter from "./website";
 import businessRouter from "./business";
 import publicRouter from "./public";
+import internalRouter from "./internal";
 
 const router = Router();
 
@@ -15,6 +16,7 @@ router.use("/auth", authRouter);
 router.use("/website", websiteRouter);
 router.use("/business", businessRouter);
 router.use("/public", publicRouter);
+router.use("/internal", internalRouter);
 router.use("/services", servicesRouter);
 router.use("/portfolio", portfolioRouter);
 router.use("/contact", contactRouter);

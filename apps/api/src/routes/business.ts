@@ -1,7 +1,7 @@
 import { Router } from "express";
 import BusinessController from "../controllers/BusinessController";
 import CatalogController from "../controllers/CatalogController";
-import { authenticate, requireClient } from "../middleware/auth";
+import { authenticate, blockInDemo, requireClient } from "../middleware/auth";
 import { validateRequest } from "../middleware/validation";
 import * as v from "../validators/business";
 
@@ -52,7 +52,7 @@ router.patch("/notifications/:id/read", byId, BusinessController.markNotificatio
 
 router.route("/settings")
   .get(BusinessController.getSettings)
-  .put(validateRequest({ body: v.settingsBody }), BusinessController.updateSettings);
+  .put(blockInDemo, validateRequest({ body: v.settingsBody }), BusinessController.updateSettings);
 
 router.post("/ai/insights", validateRequest({ body: v.insightsBody }), BusinessController.getInsight);
 

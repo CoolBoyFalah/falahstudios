@@ -3,6 +3,11 @@ import { asyncHandler, AppError } from "../utils/error-handler";
 import AuthService from "../services/AuthService";
 
 export class AuthController {
+  static demo = asyncHandler(async (req: Request, res: Response) => {
+    const result = await AuthService.loginToDemo();
+    res.json({ success: true, data: result });
+  });
+
   static register = asyncHandler(async (req: Request, res: Response) => {
     const { email, password, name } = req.body;
 

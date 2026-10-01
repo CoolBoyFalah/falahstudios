@@ -14,6 +14,7 @@ export interface AuthRequest extends Request {
   userId?: string;
   userRole?: string;
   clientId?: string;
+  isDemo?: boolean;
 }
 
 interface JwtPayload {
@@ -68,14 +69,24 @@ export async function requireClient(
       throw new AppError("Client authentication is required", 403);
     }
 
-    const exists = await Client.exists({ _id: req.clientId, isActive: true });
-    if (!exists) {
+    const client = await Client.findOne({ _id: req.clientId, isActive: true }).select("isDemo").lean();
+    if (!client) {
       throw new AppError("This workspace is no longer active.", 401);
     }
+    req.isDemo = Boolean(client.isDemo);
 
     next();
   } catch (error) {
     next(error);
+  }
+}
+
+/** Blocks changes that would spoil the shared demo for other visitors. */
+export function blockInDemo(req: AuthRequest, res: Response, next: NextFunction) {
+  if (req.isDemo) {
+    next(new AppError("This can't be changed in the demo.", 403));
+  } else {
+    next();
   }
 }
 

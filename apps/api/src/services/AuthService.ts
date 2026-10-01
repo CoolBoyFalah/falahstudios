@@ -3,6 +3,7 @@ import Client from "../models/Client";
 import bcrypt from "bcryptjs";
 import { AppError } from "../utils/error-handler";
 import { generateToken } from "../middleware/auth";
+import { DEMO_CLIENT_CODE, ensureDemoWorkspace } from "./demo";
 
 export class AuthService {
   async registerUser(
@@ -90,6 +91,9 @@ export class AuthService {
     const clientCode = parts[1];
     const secret = parts[2];
 
+    // The public demo code also builds or refreshes the demo workspace.
+    if (clientCode === DEMO_CLIENT_CODE) await ensureDemoWorkspace();
+
     const client = await Client.findOne({
       clientCode,
       isActive: true,
@@ -120,8 +124,26 @@ export class AuthService {
         name: client.name,
         slug: client.slug,
         clientCode: client.clientCode,
+        currency: client.currency,
+        isDemo: Boolean(client.isDemo),
       },
       token,
+    };
+  }
+
+  /** One-click sign-in to the shared demo workspace. */
+  async loginToDemo() {
+    const client = await ensureDemoWorkspace();
+    return {
+      client: {
+        id: client._id,
+        name: client.name,
+        slug: client.slug,
+        clientCode: client.clientCode,
+        currency: client.currency,
+        isDemo: true,
+      },
+      token: generateToken("", "client", client._id.toString()),
     };
   }
 }

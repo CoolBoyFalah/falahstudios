@@ -107,6 +107,14 @@ export default function SignIn() {
           </button>
         </form>
 
+        <div className="mt-6 flex items-center gap-4 text-[11px] text-faint">
+          <span className="h-px flex-1 bg-line" />{t("login.or")}<span className="h-px flex-1 bg-line" />
+        </div>
+        <a href="/demo" className="os-quiet-button mt-6 flex h-14 w-full flex-col items-center justify-center rounded-xl text-sm font-semibold">
+          <span className="flex items-center gap-2"><Icon.Spark size={16} />{t("login.demo")}</span>
+          <span className="mt-0.5 text-[11px] font-normal text-muted">{t("login.demoHint")}</span>
+        </a>
+
         <p className="mt-8 text-xs text-muted">
           {t("login.noCode")}{" "}
           <a href="mailto:hello@falahstudios.com" className="text-gold-text underline-offset-4 transition hover:underline">{t("login.contact")}</a>

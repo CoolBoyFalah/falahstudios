@@ -58,7 +58,7 @@ function paginated<T>(items: T[], total: number, page: number, limit: number) {
 
 export class BusinessController {
   static getMe = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const client = await Client.findById(clientIdFor(req)).select("name slug clientCode currency createdAt");
+    const client = await Client.findById(clientIdFor(req)).select("name slug clientCode currency isDemo createdAt");
     if (!client) throw new AppError("Client not found", 404);
     const unreadNotifications = await Notification.countDocuments({ clientId: client._id, readAt: { $exists: false } });
     res.json({ success: true, data: { client, unreadNotifications } });

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { api } from "../lib/api";
 import { usePreferences, type MessageKey } from "../lib/i18n";
-import { getClient, getToken, signOut, type SessionClient } from "../lib/session";
+import { getClient, getToken, signOut, updateClient, type SessionClient } from "../lib/session";
 import { Icon } from "./icons";
 import { cx } from "./ui";
 
@@ -125,6 +125,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
     api<{ client: SessionClient; unreadNotifications: number }>("/business/me")
       .then((me) => {
         setUnread(me.unreadNotifications);
+        if (Boolean(me.client.isDemo) !== Boolean(getClient()?.isDemo)) updateClient({ isDemo: Boolean(me.client.isDemo) });
         if (me.client.currency) setCurrency(me.client.currency);
       })
       .catch(() => undefined);
@@ -219,6 +220,21 @@ export default function Shell({ children }: { children: React.ReactNode }) {
       )}
 
       <div className="lg:ps-72">
+        {client?.isDemo && (
+          <div className="sticky top-[57px] z-20 border-b border-gold/25 bg-gradient-to-r from-gold/[0.16] via-gold/[0.08] to-transparent backdrop-blur-xl lg:top-0">
+            <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-2.5 sm:px-8 lg:px-10">
+              <p className="flex items-center gap-2 text-xs text-fg/85">
+                <Icon.Spark size={14} className="shrink-0 text-gold-text" />{t("demo.banner")}
+              </p>
+              <a
+                href="mailto:hello@falahstudios.com?subject=Falah%20OS%20for%20my%20business"
+                className="os-amber-button inline-flex h-8 items-center gap-1.5 rounded-lg px-3 text-xs font-semibold"
+              >
+                {t("demo.cta")}<Icon.Arrow size={13} />
+              </a>
+            </div>
+          </div>
+        )}
         <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-8 lg:px-10 lg:py-10">{children}</main>
       </div>
     </div>

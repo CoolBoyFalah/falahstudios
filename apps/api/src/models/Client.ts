@@ -15,6 +15,9 @@ export interface IClient extends Document {
   pricesIncludeTax: boolean;
   taxNumber: string;
   receiptNote: string;
+  /** The public demo workspace (see services/demo.ts). */
+  isDemo: boolean;
+  demoResetAt?: Date;
   createdAt: Date;
   updatedAt: Date;
   compareAccessCode(secret: string): Promise<boolean>;
@@ -60,6 +63,8 @@ const ClientSchema = new Schema<IClient>(
     pricesIncludeTax: { type: Boolean, default: true },
     taxNumber: { type: String, default: "", trim: true },
     receiptNote: { type: String, default: "", trim: true },
+    isDemo: { type: Boolean, default: false },
+    demoResetAt: { type: Date },
   },
   { timestamps: true }
 );

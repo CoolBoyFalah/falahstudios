@@ -4,6 +4,7 @@ export interface SessionClient {
   slug: string;
   clientCode: string;
   currency?: string;
+  isDemo?: boolean;
 }
 
 const TOKEN_KEY = "falah_os_token";

@@ -39,6 +39,17 @@ const messages = {
   "login.expired": ["Your session ended. Please sign in again.", "انتهت جلستك. يرجى تسجيل الدخول مجددًا."],
   "login.noCode": ["Don't have an access code?", "ليس لديك رمز دخول؟"],
   "login.contact": ["Contact Falah Studios", "تواصل مع استوديوهات فلاح"],
+  "login.or": ["or", "أو"],
+  "login.demo": ["Try the live demo", "جرّب النسخة التجريبية"],
+  "login.demoHint": ["No code needed. Explore a sample bakery.", "بدون رمز. استكشف مخبزًا تجريبيًا."],
+
+  // Demo
+  "demo.opening": ["Opening the demo…", "جارٍ فتح النسخة التجريبية…"],
+  "demo.failed": ["The demo couldn't open. Please try again.", "تعذّر فتح النسخة التجريبية. يرجى المحاولة مجددًا."],
+  "demo.retry": ["Try again", "حاول مجددًا"],
+  "demo.banner": ["You're exploring a live demo. Try anything: it resets every night.", "أنت تستكشف نسخة تجريبية مباشرة. جرّب كل شيء، فهي تُعاد كل ليلة."],
+  "demo.cta": ["Get Falah OS for your business", "احصل على فلاح OS لنشاطك"],
+  "demo.locked": ["Business settings are locked in the demo.", "إعدادات النشاط مقفلة في النسخة التجريبية."],
 
   // Common
   "common.save": ["Save changes", "حفظ التغييرات"],
@@ -410,6 +421,7 @@ const errorKeys: Record<string, MessageKey> = {
   "This record already exists": "error.duplicate",
   "Too many attempts. Please wait a few minutes and try again.": "error.rateLimit",
   "Too many requests. Please try again shortly.": "error.rateLimit",
+  "This can't be changed in the demo.": "demo.locked",
 };
 
 interface Preferences {
