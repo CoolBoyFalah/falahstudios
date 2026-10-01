@@ -8,7 +8,12 @@ const apiOrigin = process.env.API_ORIGIN?.replace(/\/$/, "");
 const nextConfig = {
   poweredByHeader: false,
   async rewrites() {
-    return apiOrigin ? [{ source: "/api/:path*", destination: `${apiOrigin}/api/:path*` }] : [];
+    return [
+      // Launch countdown pages (static files in public/launch)
+      { source: "/launch", destination: "/launch/index.html" },
+      { source: "/launch/ar", destination: "/launch/ar/index.html" },
+      ...(apiOrigin ? [{ source: "/api/:path*", destination: `${apiOrigin}/api/:path*` }] : []),
+    ];
   },
   async headers() {
     return [
