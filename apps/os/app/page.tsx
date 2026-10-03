@@ -117,7 +117,7 @@ export default function SignIn() {
 
         <p className="mt-8 text-xs text-muted">
           {t("login.noCode")}{" "}
-          <a href="mailto:hello@falahstudios.com" className="text-gold-text underline-offset-4 transition hover:underline">{t("login.contact")}</a>
+          <a href="mailto:contact.falahstudios@gmail.com" className="text-gold-text underline-offset-4 transition hover:underline">{t("login.contact")}</a>
         </p>
 
         <p className="os-kicker mt-16 !text-[9px] !text-faint">{t("brand.version")}</p>

@@ -227,7 +227,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
                 <Icon.Spark size={14} className="shrink-0 text-gold-text" />{t("demo.banner")}
               </p>
               <a
-                href="mailto:hello@falahstudios.com?subject=Falah%20OS%20for%20my%20business"
+                href="mailto:contact.falahstudios@gmail.com?subject=Falah%20OS%20for%20my%20business"
                 className="os-amber-button inline-flex h-8 items-center gap-1.5 rounded-lg px-3 text-xs font-semibold"
               >
                 {t("demo.cta")}<Icon.Arrow size={13} />
