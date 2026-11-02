@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Falah Labs · Hardware, designed in Abu Dhabi</title>
+<meta name="description" content="Falah Labs is the hardware branch of Falah Studios: useful, beautiful devices designed in Abu Dhabi. Some we sell. Some we give to the people who need them most.">
+<meta name="theme-color" content="#0B0A09">
+<meta property="og:title" content="Falah Labs">
+<meta property="og:description" content="Hardware, designed in Abu Dhabi. Coming soon.">
+<meta property="og:image" content="https://falahstudios.com/assets/og-labs.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B0A09'/%3E%3Cpath d='M32 12 52 32 32 52 12 32z' fill='%23F2A31B'/%3E%3C/svg%3E">
+<style>
+@font-face{font-family:"Nuqta Serif";src:url(/fonts/NuqtaSerif-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Nuqta Serif";src:url(/fonts/NuqtaSerif-Italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Nuqta Sans";src:url(/fonts/NuqtaSans-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Nuqta Sans";src:url(/fonts/NuqtaSans-Medium.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Nuqta Arabic";src:url(/fonts/NuqtaArabic-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Nuqta Arabic";src:url(/fonts/NuqtaArabic-SemiBold.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Nuqta Dot";src:url(/fonts/NuqtaDot-Regular.woff2) format("woff2");font-display:swap}
+/* Falah Labs: one dark stage, one beam of light, the product in the middle. */
+:root{
+  --bg:#0B0A09; --bg-2:#12100E; --panel:#171512; --ink:#F4EDE1; --ink-2:rgba(244,237,225,.66); --ink-3:rgba(244,237,225,.42);
+  --line:rgba(255,236,205,.10); --line-2:rgba(255,236,205,.18); --amber:#F2A31B; --amber-2:#FFC04A;
+  --serif:"Nuqta Serif",Georgia,serif; --sans:"Nuqta Sans",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  --ar:"Nuqta Arabic","Geeza Pro",Tahoma,sans-serif; --dot:"Nuqta Dot",ui-monospace,Menlo,monospace;
+  --gutter:clamp(20px,4vw,48px); --ease:cubic-bezier(.2,.8,.2,1);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}button,input{font:inherit;color:inherit}button{cursor:pointer;background:none;border:0;padding:0}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:6px}
+::selection{background:var(--amber);color:#0B0A09}
+.wrap{width:min(1200px,100% - 2*var(--gutter));margin-inline:auto}
+.dot{font-family:var(--dot);letter-spacing:.14em;text-transform:uppercase}
+.h1{font:400 clamp(46px,7.6vw,108px)/.95 var(--serif);letter-spacing:-.034em;margin:0;text-wrap:balance}
+.h2{font:400 clamp(36px,5vw,68px)/1.02 var(--serif);letter-spacing:-.028em;margin:0;text-wrap:balance}
+.h1 em,.h2 em{font-style:italic;color:var(--amber-2)}
+.lead{font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:var(--ink-2);margin:0;max-width:34em}
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border-radius:999px;font:500 15px/1 var(--sans);white-space:nowrap;transition:background .25s,box-shadow .25s,transform .25s var(--ease)}
+.btn-amber{background:var(--amber);color:#0B0A09}.btn-amber:hover{background:var(--amber-2)}
+.btn-ghost{box-shadow:inset 0 0 0 1px var(--line-2);color:var(--ink)}.btn-ghost:hover{box-shadow:inset 0 0 0 1px var(--ink)}
+
+/* bar */
+.bar{position:sticky;top:0;z-index:40;padding-top:env(safe-area-inset-top,0px);background:rgba(11,10,9,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar-in{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.back{font-size:14px;color:var(--ink-2);display:flex;align-items:center;gap:8px}.back:hover{color:var(--ink)}
+.logo{font:400 16px/1 var(--dot);letter-spacing:.2em;color:var(--amber);display:flex;align-items:center;gap:11px}
+.logo i{width:9px;height:9px;background:var(--amber);transform:rotate(45deg);box-shadow:0 0 12px var(--amber);animation:blink 2.4s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+.lang{height:38px;padding:0 14px;border-radius:999px;font-size:14px;color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--line-2)}.lang:hover{color:var(--ink)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:clamp(56px,8vw,96px) 0 0;text-align:center}
+.hero-c{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:24px}
+.tagline{font:400 15px/1 var(--dot);letter-spacing:.2em;color:var(--amber);display:flex;align-items:center;gap:12px}
+.hero .lead{text-align:center}
+.stage{position:relative;height:clamp(440px,52vw,620px);display:grid;place-items:center;margin-top:16px}
+.beam{position:absolute;top:-30%;left:50%;width:min(760px,130%);height:130%;transform:translateX(-50%);background:linear-gradient(180deg,rgba(255,226,170,.22),rgba(255,226,170,.05) 70%,transparent);clip-path:polygon(42% 0,58% 0,100% 100%,0 100%);filter:blur(12px);animation:on 1.6s steps(1) both}
+@keyframes on{0%{opacity:0}30%{opacity:1}36%{opacity:.25}44%{opacity:1}}
+.floor{position:absolute;bottom:8%;left:50%;width:min(560px,92%);height:70px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(255,214,150,.22),transparent)}
+.device{position:relative;width:min(340px,68vw);aspect-ratio:1/1.08;border-radius:clamp(44px,6vw,64px);background:linear-gradient(165deg,#3A332C 0%,#1A1714 46%,#0E0C0A 100%);box-shadow:inset 0 2px 0 rgba(255,240,215,.16),inset 0 -16px 34px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,236,205,.06),0 60px 90px -36px rgba(0,0,0,.95),0 0 150px -20px rgba(242,163,27,.22);animation:hover 6s ease-in-out infinite alternate;display:flex;flex-direction:column;padding:11% 10% 13%;gap:9%;direction:ltr}
+@keyframes hover{from{transform:translateY(-7px)}to{transform:translateY(7px)}}
+.screen{height:22%;border-radius:18px;background:#070605;box-shadow:inset 0 2px 10px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,236,205,.07);overflow:hidden;display:flex;align-items:center}
+.ticker{display:flex;white-space:nowrap;animation:tick 14s linear infinite;font:400 clamp(18px,2.2vw,25px)/1 var(--dot);letter-spacing:.1em;color:var(--amber);text-shadow:0 0 10px rgba(242,163,27,.75)}
+.ticker span{padding-right:1.2em}
+@keyframes tick{to{transform:translateX(-50%)}}
+.lower{flex:1;display:flex;gap:10%;align-items:center}
+.grille{flex:1;align-self:stretch;border-radius:16px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath d='M7 3.2 10.8 7 7 10.8 3.2 7z' fill='%23FFEED6' fill-opacity='.17'/%3E%3C/svg%3E");background-size:14px 14px}
+.knob{width:34%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#4A423A,#1B1815 62%);box-shadow:0 10px 18px -6px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,240,215,.2),0 0 0 7px #120F0D,0 0 0 8px rgba(255,236,205,.08);position:relative;animation:turn 9s ease-in-out infinite alternate}
+.knob::after{content:"";position:absolute;top:12%;left:50%;width:9px;height:9px;margin-left:-4.5px;background:var(--amber);transform:rotate(45deg);box-shadow:0 0 10px var(--amber)}
+@keyframes turn{from{transform:rotate(-40deg)}to{transform:rotate(60deg)}}
+.led{position:absolute;top:6.4%;right:12%;width:8px;height:8px;background:var(--amber);transform:rotate(45deg);box-shadow:0 0 12px var(--amber);animation:blink 1.8s ease-in-out infinite}
+.etch{position:absolute;bottom:5%;left:0;right:0;text-align:center;font:400 10px/1 var(--dot);letter-spacing:.3em;color:rgba(255,236,205,.22)}
+
+/* marquee band */
+.band{border-block:1px solid var(--line);overflow:hidden;background:var(--bg-2);padding:18px 0}
+.band-in{display:flex;width:max-content;animation:band 30s linear infinite;font:400 clamp(20px,2.4vw,30px)/1 var(--dot);letter-spacing:.14em;color:var(--amber);direction:ltr}
+.band-in span{padding-right:2em;white-space:nowrap}
+@keyframes band{to{transform:translateX(-50%)}}
+
+/* sections */
+.sec{padding:clamp(80px,11vw,150px) 0}
+.kicker{font:400 14px/1 var(--dot);letter-spacing:.2em;color:var(--ink-3);margin-bottom:22px;display:block}
+
+/* exploded view, assembled by scroll */
+.build{height:220vh;position:relative}
+.build-pin{position:sticky;top:0;height:100vh;display:grid;grid-template-columns:1fr 1.1fr;align-items:center;gap:clamp(24px,4vw,64px)}
+.build-copy{display:flex;flex-direction:column;gap:22px}
+.track{display:flex;flex-direction:column;gap:12px;margin-top:10px;font:400 15px/1 var(--dot);letter-spacing:.14em;direction:ltr;text-align:left}
+.track li{list-style:none;display:flex;align-items:center;gap:14px;color:var(--ink-3)}
+.track li::before{content:"";width:9px;height:9px;transform:rotate(45deg);box-shadow:inset 0 0 0 1.5px currentColor}
+.track li.done{color:var(--ink-2)}.track li.done::before{background:currentColor}
+.track li.now{color:var(--amber)}.track li.now::before{background:var(--amber);box-shadow:0 0 12px var(--amber);animation:blink 1.6s ease-in-out infinite}
+.track{padding:0;margin:8px 0 0}
+.x3d{position:relative;height:min(78vh,720px);perspective:1800px;display:grid;place-items:center}
+.stack{position:relative;width:300px;height:324px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-36deg)}
+.layer{position:absolute;inset:0;border-radius:52px;transform-style:preserve-3d;transition:none;box-shadow:0 0 0 1px rgba(255,236,205,.10)}
+.layer .mk{position:absolute;left:30px;bottom:22px;font:400 13px/1 var(--dot);letter-spacing:.24em;color:rgba(255,236,205,.45)}
+.l0{background:linear-gradient(160deg,#211D19,#0C0A09)}
+.l1{background:#0F1411;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='324'%3E%3Cg fill='none' stroke='%23F2A31B' stroke-opacity='.45' stroke-width='2'%3E%3Cpath d='M40 80h80l20 20h90M40 130h60l20-20M60 200h100l20 20h70M150 250v-40M230 80v60M90 260h120'/%3E%3C/g%3E%3Cg fill='%23070806'%3E%3Crect x='120' y='130' width='70' height='70' rx='8'/%3E%3Crect x='60' y='225' width='40' height='26' rx='4'/%3E%3Crect x='215' y='160' width='36' height='52' rx='4'/%3E%3C/g%3E%3Cpath d='M155 150l15 15-15 15-15-15z' fill='%23F2A31B'/%3E%3Cg fill='%23F2A31B' fill-opacity='.8'%3E%3Ccircle cx='40' cy='80' r='5'/%3E%3Ccircle cx='230' cy='80' r='5'/%3E%3Ccircle cx='60' cy='200' r='5'/%3E%3Ccircle cx='250' cy='220' r='5'/%3E%3C/g%3E%3C/svg%3E")}
+.l2{background:#16130F;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M8 3.5 12.5 8 8 12.5 3.5 8z' fill='%23FFEED6' fill-opacity='.16'/%3E%3C/svg%3E");background-size:16px 16px}
+.l3{background:rgba(7,6,5,.92);display:grid;place-items:center}
+.l3 b{font:400 34px/1 var(--dot);letter-spacing:.12em;color:var(--amber);text-shadow:0 0 14px rgba(242,163,27,.8);font-weight:400}
+.l4{background:linear-gradient(165deg,rgba(58,51,44,.9),rgba(20,17,15,.88));box-shadow:inset 0 2px 0 rgba(255,240,215,.16),0 0 0 1px rgba(255,236,205,.10)}
+.l4::before{content:"";position:absolute;left:30px;right:30px;top:36px;height:70px;border-radius:16px;background:#070605;box-shadow:inset 0 0 0 1px rgba(255,236,205,.08)}
+.l4::after{content:"";position:absolute;right:38px;bottom:56px;width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#4A423A,#1B1815 62%);box-shadow:0 0 0 7px #120F0D}
+
+/* principles */
+.pr-g{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,22px);margin-top:clamp(40px,5vw,64px)}
+.pr{background:var(--panel);border-radius:22px;box-shadow:inset 0 0 0 1px var(--line);padding:30px 28px 32px;display:flex;flex-direction:column;gap:14px;min-height:250px}
+.pr .n{font:400 44px/1 var(--dot);color:var(--amber);text-shadow:0 0 14px rgba(242,163,27,.4);letter-spacing:.06em}
+.pr h3{margin:auto 0 0;font:400 30px/1.1 var(--serif);letter-spacing:-.02em}
+.pr p{margin:0;color:var(--ink-2);font-size:16px}
+
+/* give */
+.give{text-align:center;border-top:1px solid var(--line)}
+.give .h2{font-size:clamp(40px,6.4vw,92px);line-height:1}
+.give .lead{margin:28px auto 0;text-align:center}
+
+/* join */
+.join{background:var(--bg-2);border-top:1px solid var(--line)}
+.join-g{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,5vw,80px);align-items:center}
+.join form{display:flex;gap:8px;background:rgba(255,255,255,.05);padding:6px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line-2);max-width:480px;margin-top:30px}
+.join input{flex:1;min-width:0;background:none;border:0;outline:0;padding:0 16px;font-size:15px}
+.join input::placeholder{color:var(--ink-3)}
+.join .note{font-size:13px;color:var(--ink-3);margin:12px 0 0;padding-inline-start:4px}
+.idea{background:var(--panel);border-radius:22px;box-shadow:inset 0 0 0 1px var(--line);padding:clamp(26px,3vw,38px);display:flex;flex-direction:column;gap:16px}
+.idea h3{margin:0;font:400 32px/1.1 var(--serif);letter-spacing:-.02em}
+.idea p{margin:0;color:var(--ink-2)}
+.idea .btn{align-self:flex-start;margin-top:6px}
+
+footer{padding:40px 0 calc(40px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);color:var(--ink-3);font-size:14px}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot a{color:var(--ink-2)}.foot a:hover{color:var(--ink)}
+
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* Arabic */
+html[lang=ar] body{font-family:var(--ar);line-height:1.75}
+html[lang=ar] .h1,html[lang=ar] .h2,html[lang=ar] .pr h3,html[lang=ar] .idea h3{font-family:var(--ar);font-weight:600;letter-spacing:0}
+html[lang=ar] .h1{font-size:clamp(40px,6.4vw,88px);line-height:1.2}
+html[lang=ar] .h2{line-height:1.25}
+html[lang=ar] .give .h2{font-size:clamp(36px,5.6vw,78px);line-height:1.25}
+html[lang=ar] .h1 em,html[lang=ar] .h2 em{font-style:normal}
+html[lang=ar] .btn,html[lang=ar] .lang,html[lang=ar] .back{font-family:var(--ar)}
+
+@media (max-width:900px){
+  .build{height:auto}
+  .build-pin{position:static;height:auto;grid-template-columns:1fr;padding:clamp(70px,10vw,110px) 0}
+  .x3d{height:520px;order:-1}
+  .stack{transform:rotateX(58deg) rotateZ(-36deg) scale(.82)}
+  .pr-g,.join-g{grid-template-columns:1fr}
+  .pr{min-height:0}
+  .back span{display:none}
+}
+@media (max-width:560px){
+  .join form{flex-direction:column;border-radius:20px}.join input{padding:12px}
+  .x3d{height:440px}.stack{transform:rotateX(58deg) rotateZ(-36deg) scale(.7)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="back" href="./">← <span data-i18n="back">Falah Studios</span></a>
+    <a class="logo" href="#top" aria-label="Falah Labs"><i></i>FALAH LABS</a>
+    <button class="lang" id="lang" type="button" lang="ar">عربي</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-c">
+      <span class="tagline"><span>◆</span>COMING SOON</span>
+      <h1 class="h1" data-i18n="h1">Hardware, <em>designed in Abu Dhabi.</em></h1>
+      <p class="lead" data-i18n="lead">Falah Labs is the hardware branch of Falah Studios. We are building useful, beautiful devices. Some we will sell. Some we will give to the people who need them most.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+        <a class="btn btn-amber" href="#join" data-i18n="cta">Get early access</a>
+        <a class="btn btn-ghost" href="#build" data-i18n="cta2">See how we build</a>
+      </div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="beam"></div><div class="floor"></div>
+      <div class="device"><i class="led"></i>
+        <div class="screen"><div class="ticker"><span>COMING SOON ◆ FALAH LABS ◆</span><span>COMING SOON ◆ FALAH LABS ◆</span><span>COMING SOON ◆ FALAH LABS ◆</span><span>COMING SOON ◆ FALAH LABS ◆</span></div></div>
+        <div class="lower"><div class="grille"></div><div class="knob"></div></div>
+        <div class="etch">FALAH LABS</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band" aria-hidden="true"><div class="band-in"><span>FALAH LABS ◆ FIRST DROP ◆ SOON ◆ DESIGNED IN ABU DHABI ◆</span><span>FALAH LABS ◆ FIRST DROP ◆ SOON ◆ DESIGNED IN ABU DHABI ◆</span></div></div>
+
+  <section class="build" id="build">
+    <div class="wrap build-pin">
+      <div class="build-copy">
+        <span class="kicker">01 / HOW WE BUILD</span>
+        <h2 class="h2" data-i18n="b.h2">Every device is built <em>in layers.</em></h2>
+        <p class="lead" data-i18n="b.p">A sketch becomes a board, a board becomes a prototype, and a prototype becomes something you can hold. We test every layer before anything ships.</p>
+        <ul class="track">
+          <li class="done">IDEA</li>
+          <li class="now">IN THE LAB</li>
+          <li>TESTING</li>
+          <li>FIRST DROP</li>
+        </ul>
+      </div>
+      <div class="x3d" aria-hidden="true">
+        <div class="stack" id="stack">
+          <div class="layer l0"><span class="mk">BASE</span></div>
+          <div class="layer l1"><span class="mk">BOARD</span></div>
+          <div class="layer l2"><span class="mk">SPEAKER</span></div>
+          <div class="layer l3"><b>FALAH LABS</b><span class="mk">DISPLAY</span></div>
+          <div class="layer l4"><span class="mk">SHELL</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <span class="kicker reveal">02 / WHAT WE BELIEVE</span>
+      <h2 class="h2 reveal" data-i18n="p.h2">Three rules for everything we make.</h2>
+      <div class="pr-g">
+        <article class="pr reveal"><span class="n">01</span><h3 data-i18n="p1.t">Useful</h3><p data-i18n="p1.p">It has to solve a real problem, every single day.</p></article>
+        <article class="pr reveal"><span class="n">02</span><h3 data-i18n="p2.t">Beautiful</h3><p data-i18n="p2.p">Designed with the same care as everything we build.</p></article>
+        <article class="pr reveal"><span class="n">03</span><h3 data-i18n="p3.t">For everyone</h3><p data-i18n="p3.p">Some we sell. Some we give to the people who need them most.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec give">
+    <div class="wrap reveal">
+      <span class="kicker">03 / WHY</span>
+      <h2 class="h2" data-i18n="g.h2">Some we'll sell.<br><em>Some we'll give away.</em></h2>
+      <p class="lead" data-i18n="g.p">Good technology should reach the people who need it most, not only the people who can afford it. That idea is built into Falah Labs from day one.</p>
+    </div>
+  </section>
+
+  <section class="sec join" id="join">
+    <div class="wrap join-g">
+      <div class="reveal">
+        <span class="kicker">04 / EARLY ACCESS</span>
+        <h2 class="h2" data-i18n="j.h2">Be first when it drops.</h2>
+        <form id="early">
+          <input type="email" name="email" required autocomplete="email" placeholder="Your email" data-i18n-ph="j.ph" aria-label="Your email">
+          <button class="btn btn-amber" type="submit" data-i18n="j.btn">Get early access</button>
+        </form>
+        <p class="note" data-i18n="j.note">One email when there is something to show. That's it.</p>
+      </div>
+      <div class="idea reveal">
+        <h3 data-i18n="i.t">Have a problem a device could solve?</h3>
+        <p data-i18n="i.p">Tell us. The best hardware starts with a real problem, and yours might be the next thing we build.</p>
+        <a class="btn btn-ghost" id="ideaBtn" href="https://wa.me/971507750133" target="_blank" rel="noopener"><span data-i18n="i.btn">Tell us on WhatsApp</span> ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span data-i18n="f.c">Falah Labs is part of Falah Studios · Abu Dhabi, UAE</span>
+    <span><a href="./" data-i18n="f.home">Falah Studios</a> · <a href="https://instagram.com/falahstudios" target="_blank" rel="noopener">Instagram ↗</a></span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  document.documentElement.classList.add("js");
+  const $ = (s) => document.querySelector(s), $$ = (s) => [...document.querySelectorAll(s)];
+  const EMAIL = "contact.falahstudios@gmail.com";
+  const AR = {
+    "back": "فلاح ستوديوز",
+    "h1": "أجهزة، <em>صُمّمت في أبوظبي.</em>",
+    "lead": "فلاح لابز هو فرع الأجهزة في فلاح ستوديوز. نبني أجهزة مفيدة وجميلة. بعضها سنبيعه، وبعضها سنهديه لمن يحتاجه أكثر.",
+    "cta": "احصل على وصول مبكر", "cta2": "شاهد كيف نبني",
+    "b.h2": "كل جهاز يُبنى <em>طبقةً طبقة.</em>",
+    "b.p": "الفكرة تصبح لوحة إلكترونية، واللوحة تصبح نموذجاً أولياً، والنموذج يصبح شيئاً تحمله بيدك. نختبر كل طبقة قبل أن يخرج أي شيء.",
+    "p.h2": "ثلاث قواعد لكل ما نصنعه.",
+    "p1.t": "مفيد", "p1.p": "يجب أن يحل مشكلة حقيقية، كل يوم.",
+    "p2.t": "جميل", "p2.p": "مصمّم بنفس العناية التي نبني بها كل شيء.",
+    "p3.t": "للجميع", "p3.p": "بعضها نبيعه، وبعضها نهديه لمن يحتاجه أكثر.",
+    "g.h2": "بعضها سنبيعه.<br><em>وبعضها سنهديه.</em>",
+    "g.p": "التقنية الجيدة يجب أن تصل لمن يحتاجها أكثر، لا لمن يقدر على ثمنها فقط. هذه الفكرة جزء من فلاح لابز منذ اليوم الأول.",
+    "j.h2": "كن أول من يعرف.", "j.ph": "بريدك الإلكتروني", "j.btn": "احصل على وصول مبكر", "j.note": "رسالة واحدة عندما يكون لدينا ما نعرضه. فقط.",
+    "i.t": "عندك مشكلة يمكن لجهاز أن يحلها؟", "i.p": "أخبرنا. أفضل الأجهزة تبدأ بمشكلة حقيقية، وقد تكون مشكلتك هي ما نبنيه بعد ذلك.", "i.btn": "أخبرنا عبر واتساب",
+    "f.c": "فلاح لابز جزء من فلاح ستوديوز · أبوظبي، الإمارات", "f.home": "فلاح ستوديوز",
+  };
+  let lang = "en";
+  const store = { get: (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} } };
+  function setLang(l) {
+    lang = l; document.documentElement.lang = l; document.documentElement.dir = l === "ar" ? "rtl" : "ltr";
+    $$("[data-i18n]").forEach((el) => { if (el.dataset.en === undefined) el.dataset.en = el.innerHTML; el.innerHTML = l === "ar" && AR[el.dataset.i18n] ? AR[el.dataset.i18n] : el.dataset.en; });
+    $$("[data-i18n-ph]").forEach((el) => { if (el.dataset.enPh === undefined) el.dataset.enPh = el.placeholder; el.placeholder = l === "ar" ? AR[el.dataset.i18nPh] : el.dataset.enPh; });
+    const b = $("#lang"); b.textContent = l === "ar" ? "English" : "عربي"; b.lang = l === "ar" ? "en" : "ar";
+    $("#ideaBtn").href = "https://wa.me/971507750133?text=" + encodeURIComponent(l === "ar" ? "مرحباً فلاح لابز! عندي فكرة لجهاز: " : "Hi Falah Labs! I have an idea for a device: ");
+    store.set("lang", l);
+  }
+  $("#lang").addEventListener("click", () => setLang(lang === "ar" ? "en" : "ar"));
+
+  /* exploded view: the layers come together as you scroll through the section */
+  const stack = $("#stack"), layers = $$("#stack .layer"), build = $("#build");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function assemble() {
+    const r = build.getBoundingClientRect(), span = Math.max(1, r.height - innerHeight);
+    const p = reduce ? 0.5 : Math.min(1, Math.max(0, -r.top / span));
+    const e = p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+    const gap = 92 - 84 * e;
+    layers.forEach((l, i) => { l.style.transform = `translateZ(${(i * gap).toFixed(1)}px)`; l.style.opacity = i === 3 ? (1 - e * 0.15).toFixed(2) : "1"; });
+    const narrow = innerWidth <= 900, s = narrow ? (innerWidth <= 560 ? 0.7 : 0.82) : 1;
+    stack.style.transform = `translateY(${(gap * 1.9 * s).toFixed(1)}px) rotateX(${(58 - 6 * e).toFixed(2)}deg) rotateZ(${(-36 + 8 * e).toFixed(2)}deg) scale(${s})`;
+  }
+  addEventListener("scroll", assemble, { passive: true }); addEventListener("resize", assemble); assemble();
+
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+    $$(".reveal").forEach((el, i) => { el.style.transitionDelay = `${(i % 3) * 70}ms`; io.observe(el); });
+  } else $$(".reveal").forEach((el) => el.classList.add("in"));
+
+  $("#early").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const a = document.createElement("a");
+    a.href = `mailto:${EMAIL}?subject=${encodeURIComponent("Falah Labs early access")}&body=${encodeURIComponent("Please add me to the Falah Labs early-access list: " + e.target.email.value.trim())}`;
+    a.click();
+  });
+
+  setLang(store.get("lang") === "ar" || location.hash === "#ar" ? "ar" : "en");
+})();
+</script>
+</body>
+</html>
